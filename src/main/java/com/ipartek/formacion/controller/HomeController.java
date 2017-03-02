@@ -16,38 +16,47 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class HomeController {
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
+
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
-		
+
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
+
 		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
+
+		model.addAttribute("serverTime", formattedDate);
+
 		return "home";
 	}
-	
+
 	@RequestMapping(value = "/lanzar", method = RequestMethod.GET)
-	public String lanzarDado(Locale locale, Model model) {
-		logger.info("lanzarDado");
-		
+	public String tirarDado(Locale locale, Model model) {
+		logger.info("Lanzar dado");
+
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
 		String formattedDate = dateFormat.format(date);
-		model.addAttribute("serverTime", formattedDate );
-		model.addAttribute("afortunado", "mariano rajoy" );
-		
+		model.addAttribute("serverTime", formattedDate);
+
+		String afortunado = "Marianiko";
+
+		model.addAttribute("afortunado", afortunado);
+
 		return "home";
 	}
-	
+
+	@RequestMapping(value = "/estadisticas", method = RequestMethod.GET)
+	public String listarEstadisticas(Model model) {
+		logger.info("Listando página de estadisticas");
+
+		return "estadisticas";
+	}
+
 }

@@ -27,27 +27,17 @@
 			
 		<div id="cabecera">
 			<h1>
-				Proyecto 1D6 - Backoffice 
+				Backoffice 
 			</h1>
-			<img id="imghackerman" src="resources/img/hackerman.jpg" alt="Hackerman"/>
-			<hr>
 			<h3>
-				Listado Usuarios
+				Formulario - CRUD Usuarios
 			</h3>
 		</div>
 		
 		<div class="container">
-			<ul>
-				<li>Josefina (7 lanzamientos)</li>
-				<li>Josu (5 lanzamientos)</li>
-				<li>Jesulin (2 lanzamientos)</li>
-			</ul>
+			<p>Listado Usuarios</p>
 		</div>
-		<p>Crear nuevo usuario</p>
-		<br>
-		<br>
-		<hr>
-		<br>
+		
 	</div> <!-- inner -->
 </div> <!-- outer -->
 

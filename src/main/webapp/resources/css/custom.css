@@ -1,0 +1,138 @@
+body{
+	margin:0px;
+}
+
+/*
+* Estilo de texto
+*/
+h1, h2, h3, h4, h5, h6 {
+	font-family:Garamond,serif;
+}
+
+p{
+	font-family:Georgia,serif;
+}
+
+span{
+	font-family:Georgia,serif;
+}
+/*
+* Divs contenedores y bloques
+*/
+
+.inner {
+    width: 70%;
+  	margin:0 auto
+}
+
+.row {
+	margin:20px;
+	overflow: hidden;
+}
+
+.container {
+	background-color:#d3d3d3;
+	padding:2em;
+}
+
+
+/*
+* Divs columnas (De 3 y de 2)
+*/
+
+
+.col2-left {
+
+	width: 40%;
+	float: left;
+}
+
+.col2-right {
+
+	width: 60%;
+	float: right;
+}
+
+.col3-left {
+
+	width: 33%;
+	float: left;
+}
+
+.col3-center {
+
+	width: 33%;
+	display: inline-block;
+}
+
+.col3-right {
+
+	width: 33%;
+	float: right;
+}
+
+/*
+* Barra de navegacion
+*/
+
+#navbar {
+	background-color:#a8a8a8;
+	padding-top:1.5em;
+    padding-right:2em;
+    padding-bottom:0.5em;
+    padding-left:2em;
+	overflow:hidden;
+}
+
+
+#navbutton {
+	padding: 0.5em;
+	float:left;
+	font-weight:bold;
+}
+#navbutton:hover {
+	background-color:#939393;
+} 
+
+#navbutleft {
+	padding: 0.5em;
+	float:right;
+	font-weight:bold;
+}
+#navbutleft:hover {
+	background-color:#939393;
+} 
+
+#cabecera {
+	text-align:center;
+}
+
+/*
+* Imagenes
+*/
+
+#imgdado {
+	height:10em;
+    border-radius:0.5em;
+    margin-top:1em;
+    margin-bottom:1em;
+    margin-right:5em;
+    margin-left:5em;
+}
+#imgdado:hover {
+	background-color:#939393;
+} 
+
+#imgmagic {
+	height:15em;
+    border-radius:0.5em;
+    margin:1em;
+}
+
+#imghackerman {
+	height:12em;
+    border-radius:0.5em;
+    margin:1em;
+}
+
+
