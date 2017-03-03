@@ -44,8 +44,8 @@ public class DAOUsuarioImpl implements DAOUsuario {
 	private static final String SQL_INSERT = "INSERT INTO `usuario` (`nombre`) VALUES (?);";
 	private static final String SQL_UPDATE = "UPDATE `usuario` SET `nombre`= ?, `fecha_modificacion`= CURRENT_TIMESTAMP WHERE `id`= ? ;";
 	private static final String SQL_DELETE = "DELETE FROM `usuario` WHERE `id` = ?;";
-	private static final String SQL_BAJA_USUARIO = "UPDATE `usuario` SET `fecha_baja`= CURRENT_TIMESTAMP WHERE `id`= ? ;";
-	private static final String SQL_ALTA_USUARIO = "UPDATE `usuario` SET `fecha_baja`= null WHERE `id`= ? ;";
+	private static final String SQL_BAJA_USUARIO = "UPDATE `usuario` SET `fecha_modificacion`= CURRENT_TIMESTAMP , `fecha_baja`= CURRENT_TIMESTAMP WHERE `id`= ? ;";
+	private static final String SQL_ALTA_USUARIO = "UPDATE `usuario` SET  `fecha_modificacion`= CURRENT_TIMESTAMP , `fecha_baja`= null WHERE `id`= ? ;";
 	private static final String SQL_GET_ALL_ALTAS = "SELECT `id`, `nombre`, `fecha_alta`, `fecha_modificacion`, `fecha_baja` FROM `usuario` WHERE `fecha_baja` IS NULL  ORDER BY `id` DESC LIMIT 500;";
 	
 	@Override

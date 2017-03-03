@@ -8,7 +8,7 @@ public interface ServiceUsuario {
 
 	List<Usuario> listar();
 	
-	List<Usuario> listarUsuariosDeAlta();
+	Usuario LanzarDado();
 
 	Usuario buscarPorId(long id);
 

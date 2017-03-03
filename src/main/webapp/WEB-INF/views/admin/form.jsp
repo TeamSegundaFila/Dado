@@ -16,7 +16,7 @@
 			<label>Id:</label>
 			<form:input path="id" readonly="true"/><br><br>
 			<label>Nombre:</label>
-			<form:input path="nombre"/><br>	<br>
+			<form:input path="nombre"/><br>
 			<form:errors path="nombre" cssStyle="color:red;"/><br>
 			<label>Fecha Alta:</label>
 			<form:input path="fechaAlta" readonly="true"/><br><br>

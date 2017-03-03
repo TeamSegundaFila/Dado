@@ -20,7 +20,9 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
+import com.ipartek.formacion.domain.Estadistica;
 import com.ipartek.formacion.domain.Tirada;
+import com.ipartek.formacion.repository.mapper.EstadisticaMapper;
 import com.ipartek.formacion.repository.mapper.TiradaMapper;
 
 @Repository("daoTirada")
@@ -45,6 +47,7 @@ public class DAOTiradaImpl implements DAOTirada {
 	private static final String SQL_INSERT = "INSERT INTO `tirada` (`usuario_id`) VALUES (?);";
 	private static final String SQL_UPDATE = "UPDATE `tirada` SET `usuario_id`= ? WHERE `id`= ? ;";
 	private static final String SQL_DELETE = "DELETE FROM `usuario` WHERE `id` = ?;";
+	private static final String SQL_GET_ESTADISTICAS = "SELECT count(tirada.id) as Lanzamientos, usuario.nombre FROM tirada, usuario WHERE usuario.id = tirada.usuario_id GROUP BY usuario.nombre LIMIT 500;";
 	
 	@Override
 	public List<Tirada> getAll() {
@@ -52,7 +55,7 @@ public class DAOTiradaImpl implements DAOTirada {
 		try {
 			lista = (ArrayList<Tirada>) this.jdbcTemplate.query(SQL_GET_ALL, new TiradaMapper());
 		} catch (EmptyResultDataAccessException e) {
-			this.logger.warn("No existen usuarios todavia");
+			this.logger.warn("No existen tiradas todavia");
 		} catch (Exception e) {
 			this.logger.error(e.getMessage());
 		}
@@ -65,7 +68,7 @@ public class DAOTiradaImpl implements DAOTirada {
 		try {
 			lista = (ArrayList<Tirada>) this.jdbcTemplate.query(SQL_GET_BY_USUARIO_ID,new Object[] {idUsuario}, new TiradaMapper());
 		} catch (EmptyResultDataAccessException e) {
-			this.logger.warn("No existen usuarios todavia");
+			this.logger.warn("No existen tiradas todavia");
 		} catch (Exception e) {
 			this.logger.error(e.getMessage());
 		}
@@ -143,6 +146,19 @@ public class DAOTiradaImpl implements DAOTirada {
 			this.logger.error(e.getMessage());
 		}
 		return resul;
+	}
+
+	@Override
+	public List<Estadistica> getEstadisticas() {
+		ArrayList<Estadistica> lista = new ArrayList<Estadistica>();
+		try {
+			lista = (ArrayList<Estadistica>) this.jdbcTemplate.query(SQL_GET_ESTADISTICAS, new EstadisticaMapper());
+		} catch (EmptyResultDataAccessException e) {
+			this.logger.warn("No hay estadisticas");
+		} catch (Exception e) {
+			this.logger.error(e.getMessage());
+		}
+		return lista;
 	}
 
 }

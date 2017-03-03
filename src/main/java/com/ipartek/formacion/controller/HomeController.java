@@ -1,7 +1,6 @@
 package com.ipartek.formacion.controller;
 
 import java.text.DateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -43,7 +42,7 @@ public class HomeController {
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 
 		String formattedDate = dateFormat.format(date);
-
+		model.addAttribute("estadisticas", serviceTirada.getEstadisticas() );
 		model.addAttribute("serverTime", formattedDate);
 
 		return "home";
@@ -57,14 +56,12 @@ public class HomeController {
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		String formattedDate = dateFormat.format(date);
 		model.addAttribute("serverTime", formattedDate);
-		ArrayList<Usuario> pringados = (ArrayList<Usuario>) serviceUsuario.listarUsuariosDeAlta();
-		double aleatorio = Math.round(Math.random()*(pringados.size()-1));
-		int n = (int) aleatorio;
-		logger.info("Sacando valor n:" + n + " y aleatorio " + aleatorio);
+		Usuario afortunado = serviceUsuario.LanzarDado();
 		Tirada t = new Tirada();
-		t.setUsuarioId(pringados.get(n).getId());
+		t.setUsuarioId(afortunado.getId());
 		serviceTirada.crear(t);
-		model.addAttribute("afortunado", pringados.get(n).getNombre());
+		model.addAttribute("afortunado",afortunado.getNombre());
+		model.addAttribute("estadisticas", serviceTirada.getEstadisticas() );
 
 		return "home";
 	}

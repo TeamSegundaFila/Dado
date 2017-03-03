@@ -1,5 +1,6 @@
 package com.ipartek.formacion.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -54,8 +55,14 @@ public class ServiceUsuarioImpl implements ServiceUsuario {
 	}
 
 	@Override
-	public List<Usuario> listarUsuariosDeAlta() {
-		return daoUsuario.getAllUsuariosDeAlta();
+	public Usuario LanzarDado() {
+		ArrayList<Usuario> pringados = (ArrayList<Usuario>) daoUsuario.getAllUsuariosDeAlta();
+		double aleatorio = Math.round(Math.random()*(pringados.size()-1));
+		int n = (int) aleatorio;
+		logger.info("Sacando valor n:" + n + " y aleatorio " + aleatorio);
+		return pringados.get(n);
 	}
+
+	
 
 }

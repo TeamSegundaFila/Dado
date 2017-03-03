@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import com.ipartek.formacion.domain.Estadistica;
 import com.ipartek.formacion.domain.Tirada;
 
 public interface DAOTirada {
@@ -21,5 +22,7 @@ public interface DAOTirada {
 	boolean update(Tirada t);
 
 	boolean delete(long id);
+	
+	List<Estadistica> getEstadisticas();
 
 }

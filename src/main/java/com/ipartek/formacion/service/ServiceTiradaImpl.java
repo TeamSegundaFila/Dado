@@ -7,6 +7,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ipartek.formacion.domain.Estadistica;
 import com.ipartek.formacion.domain.Tirada;
 import com.ipartek.formacion.repository.DAOTirada;
 
@@ -46,6 +47,11 @@ private final Log logger = LogFactory.getLog(getClass());
 	@Override
 	public boolean eliminar(long id) {
 		return daoTirada.delete(id);
+	}
+
+	@Override
+	public List<Estadistica> getEstadisticas() {
+		return daoTirada.getEstadisticas();
 	}
 
 }
