@@ -1,5 +1,8 @@
+	/*background-color:#a8a8a8;   container ---> #d3d3d3*/
+
 body{
 	margin:0px;
+	background: linear-gradient(LightBlue, Seashell);
 }
 
 /*
@@ -22,7 +25,7 @@ span{
 
 .inner {
     width: 70%;
-  	margin:0 auto
+  	margin:0 auto;
 }
 
 .row {
@@ -31,7 +34,7 @@ span{
 }
 
 .container {
-	background-color:#d3d3d3;
+	background-color:LightSteelBlue;
 	padding:2em;
 	overflow:hidden;
 }
@@ -76,8 +79,12 @@ span{
 * Barra de navegacion
 */
 
+#navbarouter {
+	background-color:RoyalBlue;
+	overflow:hidden;
+}
+
 #navbar {
-	background-color:#a8a8a8;
 	padding-top:1.5em;
     padding-right:2em;
     padding-bottom:0.5em;
@@ -91,17 +98,31 @@ span{
 	float:left;
 	font-weight:bold;
 }
+
+#navbutton a {
+	color:white;
+	text-decoration:none;
+}
+
 #navbutton:hover {
-	background-color:#939393;
+	background-color:Pink;
 } 
 
 #navbutleft {
 	padding: 0.5em;
 	float:right;
 	font-weight:bold;
+	color:white;
+	text-decoration:none;
 }
+
+#navbutleft a {
+	color:white;
+	text-decoration:none;
+}
+
 #navbutleft:hover {
-	background-color:#939393;
+	background-color:Pink;
 } 
 
 #cabecera {
@@ -121,7 +142,7 @@ span{
     margin-left:5em;
 }
 #imgdado:hover {
-	background-color:#939393;
+	background-color:AntiqueWhite;
 } 
 
 #imgmagic {
@@ -136,4 +157,34 @@ span{
     margin:1em;
 }
 
+/*
+* Backoffice style!!
+*/
+
+.backoffice {
+	background-color:#0000AA;
+	width:100%;
+	float:left;
+	margin-left:auto;
+}
+
+.bofficecontainer {
+	background-color:LightGrey;
+	padding:2em;
+	overflow:hidden;
+	width:25em;
+	margin:auto;
+	margin-bottom:10em;
+	font-family:courier;
+}
+
+.bofficetext {
+	color:LightGrey;
+	font-family:courier;
+}
+
+.bofficetextf {
+	color:Black;
+	font-family:courier;
+}
 

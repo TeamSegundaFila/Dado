@@ -27,6 +27,7 @@
 					</ul>
 					
 				</div>
+				<br>
 				<hr>
 				<p>Total de lanzamientos ---> ${total} Lanzamientos</p>
 				<hr>

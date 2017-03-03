@@ -1,17 +1,18 @@
 <%@ include file="../includes/header.jsp" %>
-			
+	<div class="backoffice">		
 		<div id="cabecera">
-			<h1>
+			<br><br>
+			<h1 class="bofficetext">
 				Backoffice 
 			</h1>
-			<h3>
+			<h3 class="bofficetext">
 				Formulario - CRUD Usuarios
 			</h3>
 		</div>
-		
-		
-		<div class="container">
-			<h2>CRUD Usuarios</h2>
+
+		<div class="bofficecontainer">
+			<span><a href="admin">Volver</a></span>
+			<h2 class="bofficetextf">CRUD Usuarios</h2>
 		<form:form action="usuario/crear" modelAttribute="usuario">
 			<label>Id:</label>
 			<form:input path="id" readonly="true"/><br><br>
@@ -26,10 +27,10 @@
 			<form:input path="fechaBaja" readonly="true"/><br><br>
 			<c:choose>
 				<c:when test="${usuario.id == -1}">
-					<form:button type="submit">Crear</form:button>
+					<form:button class="bofficetextf" type="submit">Crear</form:button>
 				</c:when>
 				<c:otherwise>
-					<form:button type="submit">Modificar</form:button>
+					<form:button class="bofficetextf" type="submit">Modificar</form:button>
 				</c:otherwise>
 			</c:choose>
 		</form:form>
@@ -37,16 +38,16 @@
 			<form:hidden path="id"/>
 			<form:hidden path="fechaBaja"/>
 			<c:if test="${usuario.fechaBaja == null && usuario.id != -1}">
-				<form:button type="submit">Dar de baja</form:button>
+				<form:button class="bofficetextf" type="submit">Dar de baja</form:button>
 			</c:if>
 			<c:if test="${usuario.fechaBaja != null && usuario.id != -1}">
-				<form:button type="submit">Dar de alta</form:button>
+				<form:button class="bofficetextf" type="submit">Dar de alta</form:button>
 			</c:if>
 		</form:form>
 		<form:form action="usuario/eliminar" modelAttribute="usuario">
 			<form:hidden path="id"/>
-			<form:button type="submit">Eliminar</form:button>
+			<form:button class="bofficetextf" type="submit">Eliminar</form:button>
 		</form:form>
 		</div>
-		
+	</div>
 <%@ include file="../includes/footer.jsp" %>

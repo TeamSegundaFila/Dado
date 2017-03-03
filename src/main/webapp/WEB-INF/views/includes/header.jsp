@@ -13,8 +13,9 @@
 <body>
 
 <div class="outer">
-	<div class="inner">
 
+	<div id="navbarouter">
+	<div class="inner">
 		<div id="navbar">
 			<span id="navbutton">
 				<a href="#">Home</a>
@@ -26,3 +27,9 @@
 				<a href="admin">Admin</a>
 			</span>
 		</div>
+	</div>
+	</div>
+	
+	<div class="inner">
+
+		
