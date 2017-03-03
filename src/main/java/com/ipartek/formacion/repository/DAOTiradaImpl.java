@@ -47,7 +47,8 @@ public class DAOTiradaImpl implements DAOTirada {
 	private static final String SQL_INSERT = "INSERT INTO `tirada` (`usuario_id`) VALUES (?);";
 	private static final String SQL_UPDATE = "UPDATE `tirada` SET `usuario_id`= ? WHERE `id`= ? ;";
 	private static final String SQL_DELETE = "DELETE FROM `usuario` WHERE `id` = ?;";
-	private static final String SQL_GET_ESTADISTICAS = "SELECT count(tirada.id) as Lanzamientos, usuario.nombre FROM tirada, usuario WHERE usuario.id = tirada.usuario_id GROUP BY usuario.nombre LIMIT 500;";
+	private static final String SQL_GET_ESTADISTICAS_ACTIVAS = "SELECT count(tirada.id) as Lanzamientos, usuario.nombre FROM tirada, usuario WHERE usuario.id = tirada.usuario_id AND usuario.fecha_baja IS NULL GROUP BY usuario.nombre ORDER BY Lanzamientos DESC LIMIT 500;";
+	private static final String SQL_GET_ESTADISTICAS_TOTALES = "SELECT count(tirada.id) as Lanzamientos, usuario.nombre FROM tirada, usuario WHERE usuario.id = tirada.usuario_id GROUP BY usuario.nombre ORDER BY Lanzamientos DESC LIMIT 500;";
 	
 	@Override
 	public List<Tirada> getAll() {
@@ -152,7 +153,7 @@ public class DAOTiradaImpl implements DAOTirada {
 	public List<Estadistica> getEstadisticas() {
 		ArrayList<Estadistica> lista = new ArrayList<Estadistica>();
 		try {
-			lista = (ArrayList<Estadistica>) this.jdbcTemplate.query(SQL_GET_ESTADISTICAS, new EstadisticaMapper());
+			lista = (ArrayList<Estadistica>) this.jdbcTemplate.query(SQL_GET_ESTADISTICAS_ACTIVAS, new EstadisticaMapper());
 		} catch (EmptyResultDataAccessException e) {
 			this.logger.warn("No hay estadisticas");
 		} catch (Exception e) {
@@ -161,4 +162,16 @@ public class DAOTiradaImpl implements DAOTirada {
 		return lista;
 	}
 
+	@Override
+	public List<Estadistica> getEstadisticasTotales() {
+		ArrayList<Estadistica> lista = new ArrayList<Estadistica>();
+		try {
+			lista = (ArrayList<Estadistica>) this.jdbcTemplate.query(SQL_GET_ESTADISTICAS_TOTALES, new EstadisticaMapper());
+		} catch (EmptyResultDataAccessException e) {
+			this.logger.warn("No hay estadisticas");
+		} catch (Exception e) {
+			this.logger.error(e.getMessage());
+		}
+		return lista;
+	}
 }

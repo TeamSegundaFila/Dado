@@ -9,11 +9,11 @@
 			<div  class="col2-left">
 				<h2>Ranking Usuarios</h2>
 				<ol>
-					<li>Josefina (7 lanzamientos)</li>
-					<li>Josu (5 lanzamientos)</li>
-					<li>Jesulin (2 lanzamientos)</li>
+				<c:forEach items="${estadisticas}" var="e">
+					<li>${e.nombre} - ${e.contador}</li>
+				</c:forEach>
 				</ol>
-				<p>¡¡¡Josefina es la más afortunada!!!</p>
+				El ganador es ${estadisticas[0].nombre} !!
 			</div>
 			
 			<div  class="col2-right">

@@ -21,4 +21,5 @@ public interface ServiceTirada {
 	
 	List<Estadistica> getEstadisticas();
 	
+	List<Estadistica> getEstadisticasTotales();
 }

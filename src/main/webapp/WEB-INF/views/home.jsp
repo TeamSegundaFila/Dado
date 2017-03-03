@@ -17,6 +17,7 @@
 					<li>${e.nombre} - ${e.contador}</li>
 				</c:forEach>
 				</ol>
+				El ganador es ${estadisticas[0].nombre} !!
 		</div>
 		<div class="col2-right">
 			<p>  La hora según este servidor es ${serverTime}. <p>

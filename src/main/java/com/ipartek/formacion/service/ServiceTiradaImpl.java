@@ -54,4 +54,9 @@ private final Log logger = LogFactory.getLog(getClass());
 		return daoTirada.getEstadisticas();
 	}
 
+	@Override
+	public List<Estadistica> getEstadisticasTotales() {
+		return daoTirada.getEstadisticasTotales();
+	}
+
 }

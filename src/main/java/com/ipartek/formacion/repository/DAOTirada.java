@@ -25,4 +25,6 @@ public interface DAOTirada {
 	
 	List<Estadistica> getEstadisticas();
 
+	List<Estadistica> getEstadisticasTotales();
+
 }
