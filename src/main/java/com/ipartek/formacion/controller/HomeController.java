@@ -74,6 +74,10 @@ public class HomeController {
 	public String listarEstadisticas(Model model) {
 		logger.info("Listando página de estadisticas");
 
+		model.addAttribute("estadisticas", serviceEstadisticas.getEstadisticas());
+		model.addAttribute("estadisticasTotales", serviceEstadisticas.getEstadisticasTotales());
+		model.addAttribute("total", serviceEstadisticas.total());
+		model.addAttribute("ultimos", serviceEstadisticas.getUltimos());
 		return "estadisticas";
 	}
 

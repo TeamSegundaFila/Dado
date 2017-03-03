@@ -21,8 +21,10 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import com.ipartek.formacion.domain.Estadistica;
+import com.ipartek.formacion.domain.Lanzamientos;
 import com.ipartek.formacion.domain.Tirada;
 import com.ipartek.formacion.repository.mapper.EstadisticaMapper;
+import com.ipartek.formacion.repository.mapper.LanzamientoMapper;
 import com.ipartek.formacion.repository.mapper.TiradaMapper;
 
 @Repository("daoTirada")
@@ -49,6 +51,8 @@ public class DAOTiradaImpl implements DAOTirada {
 	private static final String SQL_DELETE = "DELETE FROM `usuario` WHERE `id` = ?;";
 	private static final String SQL_GET_ESTADISTICAS_ACTIVAS = "SELECT count(tirada.id) as Lanzamientos, usuario.nombre FROM tirada, usuario WHERE usuario.id = tirada.usuario_id AND usuario.fecha_baja IS NULL GROUP BY usuario.nombre ORDER BY Lanzamientos DESC LIMIT 500;";
 	private static final String SQL_GET_ESTADISTICAS_TOTALES = "SELECT count(tirada.id) as Lanzamientos, usuario.nombre FROM tirada, usuario WHERE usuario.id = tirada.usuario_id GROUP BY usuario.nombre ORDER BY Lanzamientos DESC LIMIT 500;";
+	private static final String SQL_COUNT = "SELECT COUNT(id) FROM tirada;";
+	private static final String SQL_ULTIMAS_TIRADAS = "SELECT tirada.id, usuario.nombre, tirada.fecha FROM tirada, usuario WHERE usuario.id = tirada.usuario_id ORDER BY fecha DESC LIMIT 5;";
 	
 	@Override
 	public List<Tirada> getAll() {
@@ -169,6 +173,24 @@ public class DAOTiradaImpl implements DAOTirada {
 			lista = (ArrayList<Estadistica>) this.jdbcTemplate.query(SQL_GET_ESTADISTICAS_TOTALES, new EstadisticaMapper());
 		} catch (EmptyResultDataAccessException e) {
 			this.logger.warn("No hay estadisticas");
+		} catch (Exception e) {
+			this.logger.error(e.getMessage());
+		}
+		return lista;
+	}
+	
+	@Override
+	public int total() {
+		return this.jdbcTemplate.queryForInt(SQL_COUNT);
+	}
+	
+	@Override
+	public List<Lanzamientos> getUltimos() {
+		ArrayList<Lanzamientos> lista = new ArrayList<Lanzamientos>();
+		try {
+			lista = (ArrayList<Lanzamientos>) this.jdbcTemplate.query(SQL_ULTIMAS_TIRADAS, new LanzamientoMapper());
+		} catch (EmptyResultDataAccessException e) {
+			this.logger.warn("No existen tiradas todavia");
 		} catch (Exception e) {
 			this.logger.error(e.getMessage());
 		}

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import com.ipartek.formacion.domain.Estadistica;
+import com.ipartek.formacion.domain.Lanzamientos;
 import com.ipartek.formacion.domain.Tirada;
 
 public interface DAOTirada {
@@ -26,5 +27,9 @@ public interface DAOTirada {
 	List<Estadistica> getEstadisticas();
 
 	List<Estadistica> getEstadisticasTotales();
+
+	int total();
+
+	List<Lanzamientos> getUltimos();
 
 }

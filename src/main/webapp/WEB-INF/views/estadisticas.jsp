@@ -20,26 +20,21 @@
 				<div class="container">
 					<h3>Frecuencia resultados</h3>
 					<ul>
-						<li>Resultado 1 - 4 veces</li>
-						<li>Resultado 2 - 4 veces</li>
-						<li>Resultado 3 - 3 veces</li>
-						<li>Resultado 4 - 4 veces</li>
-						<li>Resultado 5 - 27 veces</li>
-						<li>Resultado 6 - 4 veces</li>
-						<p>Representar en histograma de frecuencias?</p>
+						<c:forEach items="${estadisticasTotales}" var="t">
+							<li>${t.nombre} - ${t.contador}</li>
+						</c:forEach>
+		
 					</ul>
 					
 				</div>
 				<hr>
-				<p>Total de lanzamientos ---> 46 Lanzamientos</p>
+				<p>Total de lanzamientos ---> ${total} Lanzamientos</p>
 				<hr>
 				<h3>Historial de lanzamientos del dado</h3>
 				<ul>
-					<li>Lanzamiento #46 - 27 de marzo</li>
-					<li>Lanzamiento #45 - 27 de marzo</li>
-					<li>Lanzamiento #44 - 26 de marzo</li>
-					<li>Lanzamiento #43 - 25 de marzo</li>
-					<li>Lanzamiento #42 - 25 de marzo</li>
+					<c:forEach items="${ultimos}" var="u">
+							<li>#${u.id} ${u.nombre} - ${u.fecha}</li>
+					</c:forEach>
 				</ul>
 				<hr>
 				<br>
