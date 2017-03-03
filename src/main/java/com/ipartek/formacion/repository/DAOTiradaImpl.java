@@ -18,10 +18,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Repository;
 
 import com.ipartek.formacion.domain.Tirada;
 import com.ipartek.formacion.repository.mapper.TiradaMapper;
 
+@Repository("daoTirada")
 public class DAOTiradaImpl implements DAOTirada {
 
 	private final Log logger = LogFactory.getLog(getClass());

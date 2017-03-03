@@ -5,7 +5,7 @@
 <html>
 <head>
 	<title>Proyecto 1D6</title>
-	<base href="/formacion/" />
+	<base href="/trileros/" />
 	<!-- Custom -->
 	<link href="resources/css/custom.css" rel="stylesheet">
 </head>
@@ -16,12 +16,12 @@
 
 		<div id="navbar">
 			<span id="navbutton">
-				<a href="/formacion">Home</a>
+				<a href="#">Home</a>
 			</span> 
 			<span id="navbutton">
-				<a href="/formacion/estadisticas">Estadísticas</a>
+				<a href="estadisticas">Estadísticas</a>
 			</span> 
 			<span id="navbutleft"> 
-				<a href="/formacion/admin">Admin</a>
+				<a href="admin">Admin</a>
 			</span>
 		</div>

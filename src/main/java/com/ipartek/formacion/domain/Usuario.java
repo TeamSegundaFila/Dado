@@ -15,9 +15,9 @@ public class Usuario {
 		super();
 		this.id = -1;
 		this.nombre = "";
-		this.fechaAlta = null;
-		this.fechaModificacion = null;
-		this.fechaBaja = null;
+		this.fechaAlta = new Date(0);
+		this.fechaModificacion = new Date(0);
+		this.fechaBaja = new Date(0);
 	}
 
 	
