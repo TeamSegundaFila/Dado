@@ -23,4 +23,6 @@ public interface DAOUsuario {
 	boolean darBaja(long id);
 
 	boolean darAlta(long id);
+
+	List<Usuario> getAllUsuariosDeAlta();
 }

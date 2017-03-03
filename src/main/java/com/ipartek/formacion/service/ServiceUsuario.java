@@ -7,6 +7,8 @@ import com.ipartek.formacion.domain.Usuario;
 public interface ServiceUsuario {
 
 	List<Usuario> listar();
+	
+	List<Usuario> listarUsuariosDeAlta();
 
 	Usuario buscarPorId(long id);
 

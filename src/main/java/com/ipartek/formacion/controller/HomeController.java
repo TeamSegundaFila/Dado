@@ -1,15 +1,22 @@
 package com.ipartek.formacion.controller;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.ipartek.formacion.domain.Tirada;
+import com.ipartek.formacion.domain.Usuario;
+import com.ipartek.formacion.service.ServiceTirada;
+import com.ipartek.formacion.service.ServiceUsuario;
 
 /**
  * Handles requests for the application home page.
@@ -17,6 +24,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HomeController {
 
+	@Autowired
+	ServiceUsuario serviceUsuario;
+	
+	@Autowired
+	ServiceTirada serviceTirada;
+	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 	/**
@@ -44,10 +57,14 @@ public class HomeController {
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		String formattedDate = dateFormat.format(date);
 		model.addAttribute("serverTime", formattedDate);
-
-		String afortunado = "Marianiko";
-
-		model.addAttribute("afortunado", afortunado);
+		ArrayList<Usuario> pringados = (ArrayList<Usuario>) serviceUsuario.listarUsuariosDeAlta();
+		double aleatorio = Math.round(Math.random()*(pringados.size()-1));
+		int n = (int) aleatorio;
+		logger.info("Sacando valor n:" + n + " y aleatorio " + aleatorio);
+		Tirada t = new Tirada();
+		t.setUsuarioId(pringados.get(n).getId());
+		serviceTirada.crear(t);
+		model.addAttribute("afortunado", pringados.get(n).getNombre());
 
 		return "home";
 	}

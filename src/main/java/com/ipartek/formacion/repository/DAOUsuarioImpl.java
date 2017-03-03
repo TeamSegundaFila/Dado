@@ -46,6 +46,7 @@ public class DAOUsuarioImpl implements DAOUsuario {
 	private static final String SQL_DELETE = "DELETE FROM `usuario` WHERE `id` = ?;";
 	private static final String SQL_BAJA_USUARIO = "UPDATE `usuario` SET `fecha_baja`= CURRENT_TIMESTAMP WHERE `id`= ? ;";
 	private static final String SQL_ALTA_USUARIO = "UPDATE `usuario` SET `fecha_baja`= null WHERE `id`= ? ;";
+	private static final String SQL_GET_ALL_ALTAS = "SELECT `id`, `nombre`, `fecha_alta`, `fecha_modificacion`, `fecha_baja` FROM `usuario` WHERE `fecha_baja` IS NULL  ORDER BY `id` DESC LIMIT 500;";
 	
 	@Override
 	public List<Usuario> getAll() {
@@ -60,6 +61,19 @@ public class DAOUsuarioImpl implements DAOUsuario {
 		return lista;
 	}
 
+	@Override
+	public List<Usuario> getAllUsuariosDeAlta() {
+		ArrayList<Usuario> lista = new ArrayList<Usuario>();
+		try {
+			lista = (ArrayList<Usuario>) this.jdbcTemplate.query(SQL_GET_ALL_ALTAS,new UsuarioMapper());
+		} catch (EmptyResultDataAccessException e) {
+			this.logger.warn("No existen usuarios todavia");
+		} catch (Exception e) {
+			this.logger.error(e.getMessage());
+		}
+		return lista;
+	}
+	
 	@Override
 	public Usuario getById(long id) {
 		Usuario u = null;

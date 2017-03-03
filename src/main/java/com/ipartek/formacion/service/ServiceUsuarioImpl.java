@@ -53,4 +53,9 @@ public class ServiceUsuarioImpl implements ServiceUsuario {
 		return daoUsuario.darAlta(id);
 	}
 
+	@Override
+	public List<Usuario> listarUsuariosDeAlta() {
+		return daoUsuario.getAllUsuariosDeAlta();
+	}
+
 }
