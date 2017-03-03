@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ipartek.formacion.domain.Tirada;
 import com.ipartek.formacion.domain.Usuario;
+import com.ipartek.formacion.service.ServiceEstadisticas;
 import com.ipartek.formacion.service.ServiceTirada;
 import com.ipartek.formacion.service.ServiceUsuario;
 
@@ -29,6 +30,9 @@ public class HomeController {
 	@Autowired
 	ServiceTirada serviceTirada;
 	
+	@Autowired
+	ServiceEstadisticas serviceEstadisticas;
+	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 	/**
@@ -42,7 +46,7 @@ public class HomeController {
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 
 		String formattedDate = dateFormat.format(date);
-		model.addAttribute("estadisticas", serviceTirada.getEstadisticas() );
+		model.addAttribute("estadisticas", serviceEstadisticas.getEstadisticas() );
 		model.addAttribute("serverTime", formattedDate);
 
 		return "home";
@@ -61,7 +65,7 @@ public class HomeController {
 		t.setUsuarioId(afortunado.getId());
 		serviceTirada.crear(t);
 		model.addAttribute("afortunado",afortunado.getNombre());
-		model.addAttribute("estadisticas", serviceTirada.getEstadisticas() );
+		model.addAttribute("estadisticas", serviceEstadisticas.getEstadisticas() );
 
 		return "home";
 	}

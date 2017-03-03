@@ -49,14 +49,4 @@ private final Log logger = LogFactory.getLog(getClass());
 		return daoTirada.delete(id);
 	}
 
-	@Override
-	public List<Estadistica> getEstadisticas() {
-		return daoTirada.getEstadisticas();
-	}
-
-	@Override
-	public List<Estadistica> getEstadisticasTotales() {
-		return daoTirada.getEstadisticasTotales();
-	}
-
 }

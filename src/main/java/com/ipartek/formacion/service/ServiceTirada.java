@@ -19,7 +19,5 @@ public interface ServiceTirada {
 
 	boolean eliminar(long id);
 	
-	List<Estadistica> getEstadisticas();
 	
-	List<Estadistica> getEstadisticasTotales();
 }
