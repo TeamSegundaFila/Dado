@@ -12,11 +12,28 @@
 		</div>
 		
 		<div class="container">
-			<ul>
-				<li>Josefina (7 lanzamientos)</li>
-				<li>Josu (5 lanzamientos)</li>
-				<li>Jesulin (2 lanzamientos)</li>
-			</ul>
+			<table class="tablePlugin" cellspacing="0" width="100%">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Nombre</th>
+						<th>Fecha Alta</th>
+						<th>Fecha Modificacion</th>
+						<th>Fecha Baja</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${usuarios}" var="u">
+					<tr>
+						<td>${u.id}</td>
+						<td><a href="admin/usuario/edit/${u.id}">${u.nombre}</a></td>
+						<td>${u.fechaAlta}</td>
+						<td>${u.fechaModificacion}</td>
+						<td>${u.fechaBaja}</td>
+					</tr>		
+					</c:forEach>
+				</tbody>	
+			</table>
 		</div>
 		<a href="admin/usuario/edit">Crear nuevo usuario</a>
 		<br>

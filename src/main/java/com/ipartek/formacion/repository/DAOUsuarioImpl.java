@@ -106,7 +106,7 @@ public class DAOUsuarioImpl implements DAOUsuario {
 		boolean resul = false;
 		int affectedRows = -1;
 		try {
-			Object[] argumentos = { u.getNombre() };
+			Object[] argumentos = { u.getNombre(), u.getId() };
 			affectedRows = this.jdbcTemplate.update(SQL_UPDATE, argumentos);
 			if (affectedRows == 1) {
 				resul = true;

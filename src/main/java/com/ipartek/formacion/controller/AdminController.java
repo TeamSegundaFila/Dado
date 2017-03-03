@@ -28,7 +28,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value = "/admin/usuario/edit", method = RequestMethod.GET)
-	public String crear(Model model) {
+	public String FormularioCrear(Model model) {
 		logger.info("Entrando en admin");
 		
 		model.addAttribute("usuario", new Usuario());
@@ -36,11 +36,48 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value = "/admin/usuario/edit/{id}", method = RequestMethod.GET)
-	public String editar(Model model, @PathVariable int id) {
+	public String FormularioEditar(Model model, @PathVariable int id) {
 		logger.info("Entrando en admin");
 		
 		model.addAttribute("usuario", serviceUsuario.buscarPorId(id));
 		return "admin/form";
 	}
+	
+	@RequestMapping(value = "usuario/crear", method = RequestMethod.POST)
+	public String crear(Model model, Usuario u) {
+		logger.info("Entrando en admin");
+		
+		if (u.getId() == -1) {
+			serviceUsuario.crear(u);
+		} else {
+			serviceUsuario.modificar(u);
+		}
+		
+		model.addAttribute("usuario", serviceUsuario.buscarPorId(u.getId()));
+		return "admin/form";
+	}
+	
+	@RequestMapping(value = "usuario/altasbajas", method = RequestMethod.POST)
+	public String altaBaja(Model model, Usuario u) {
+		logger.info("Entrando en admin");
+		
+		if (u.getFechaBaja().equals("")) {
+			serviceUsuario.darBaja(u.getId());
+		} else {
+			serviceUsuario.darAlta(u.getId());
+		}
+		model.addAttribute("usuario", serviceUsuario.buscarPorId(u.getId()));
+		return "admin/form";
+	}
+	
+	@RequestMapping(value = "usuario/eliminar", method = RequestMethod.POST)
+	public String eliminar(Model model, Usuario u) {
+		logger.info("Entrando en admin");
+		serviceUsuario.eliminar(u.getId());
+		model.addAttribute("usuario", new Usuario());
+		model.addAttribute("usuarios", serviceUsuario.listar());
+		return "admin/index";
+	}
+
 	
 }

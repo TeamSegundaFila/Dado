@@ -10,11 +10,22 @@
 		</div>
 		
 		<div class="container">
+		<div class="col2-left">
+			<h2>Ranking Usuarios</h2>
+				<ol>
+					<li>Josefina (7 lanzamientos)</li>
+					<li>Josu (5 lanzamientos)</li>
+					<li>Jesulin (2 lanzamientos)</li>
+				</ol>
+				<p>¡¡¡Josefina es la más afortunada!!!</p>
+		</div>
+		<div class="col2-right">
 			<p>  La hora según este servidor es ${serverTime}. <p>
 			<a href="lanzar">
 			<img id="imgdado" src="resources/img/dado.gif" alt="Dado button"/>
 			</a>
 			<p>  Pruebe a lanzar los dados para elegir el afortunado. ¡La magia del azar le está esperando! <p>
+		</div>
 		</div>
 		
 		

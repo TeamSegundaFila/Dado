@@ -33,6 +33,7 @@ span{
 .container {
 	background-color:#d3d3d3;
 	padding:2em;
+	overflow:hidden;
 }
 
 

@@ -1,23 +1,21 @@
 package com.ipartek.formacion.domain;
 
-import java.sql.Date;
-
 public class Usuario {
 	
 	private long id;
 	private String nombre;
-	private Date fechaAlta;
-	private Date fechaModificacion;
-	private Date fechaBaja;
+	private String fechaAlta;
+	private String fechaModificacion;
+	private String fechaBaja;
 	
 	
 	public Usuario() {
 		super();
 		this.id = -1;
 		this.nombre = "";
-		this.fechaAlta = new Date(0);
-		this.fechaModificacion = new Date(0);
-		this.fechaBaja = new Date(0);
+		this.fechaAlta = null;
+		this.fechaModificacion = null;
+		this.fechaBaja = null;
 	}
 
 	
@@ -44,34 +42,43 @@ public class Usuario {
 	}
 
 
-	public Date getFechaAlta() {
+	
+
+
+	public String getFechaAlta() {
 		return fechaAlta;
 	}
 
 
-	public void setFechaAlta(Date fechaAlta) {
+
+	public void setFechaAlta(String fechaAlta) {
 		this.fechaAlta = fechaAlta;
 	}
 
 
-	public Date getFechaModificacion() {
+
+	public String getFechaModificacion() {
 		return fechaModificacion;
 	}
 
 
-	public void setFechaModificacion(Date fechaModificacion) {
+
+	public void setFechaModificacion(String fechaModificacion) {
 		this.fechaModificacion = fechaModificacion;
 	}
 
 
-	public Date getFechaBaja() {
+
+	public String getFechaBaja() {
 		return fechaBaja;
 	}
 
 
-	public void setFechaBaja(Date fechaBaja) {
+
+	public void setFechaBaja(String fechaBaja) {
 		this.fechaBaja = fechaBaja;
 	}
+
 
 
 	@Override

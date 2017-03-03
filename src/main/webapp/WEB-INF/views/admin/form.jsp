@@ -11,7 +11,7 @@
 		
 		
 		<div class="container">
-			<p>Listado Usuarios</p>
+			<h2>CRUD Usuarios</h2>
 		<form:form action="usuario/crear" modelAttribute="usuario">
 			<label>Id:</label>
 			<form:input path="id" readonly="true"/><br><br>
@@ -35,6 +35,7 @@
 		</form:form>
 		<form:form action="usuario/altasbajas" modelAttribute="usuario">
 			<form:hidden path="id"/>
+			<form:hidden path="fechaBaja"/>
 			<c:if test="${usuario.fechaBaja == null && usuario.id != -1}">
 				<form:button type="submit">Dar de baja</form:button>
 			</c:if>
