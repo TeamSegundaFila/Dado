@@ -1,29 +1,4 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
-
-<!-- Custom -->
-<link href="resources/css/custom.css" rel="stylesheet">
-
-<html>
-<head>
-	<title>Proyecto 1D6</title>
-</head>
-<body>
-
-<div class="outer">
-	<div class="inner">
-
-		<div id="navbar">
-			<span id="navbutton">
-				<a href="/formacion">Home</a>
-			</span> 
-			<span id="navbutton">
-				<a href="/formacion/estadisticas">Estadísticas</a>
-			</span> 
-			<span id="navbutleft"> 
-				<a href="/formacion/admin">Admin</a>
-			</span>
-		</div>
+<%@ include file="../includes/header.jsp" %>
 			
 		<div id="cabecera">
 			<h1>
@@ -34,12 +9,43 @@
 			</h3>
 		</div>
 		
+		
 		<div class="container">
 			<p>Listado Usuarios</p>
+		<form:form action="usuario/crear" modelAttribute="usuario">
+			<label>Id:</label>
+			<form:input path="id" readonly="true"/><br><br>
+			<label>Nombre:</label>
+			<form:input path="nombre"/><br>	<br>
+			<form:errors path="nombre" cssStyle="color:red;"/><br>
+			<label>Fecha Alta:</label>
+			<form:input path="fechaAlta" readonly="true"/><br><br>
+			<label>Fecha Modificacion:</label>
+			<form:input path="fechaModificacion" readonly="true"/><br><br>
+			<label>Fecha Baja:</label>
+			<form:input path="fechaBaja" readonly="true"/><br><br>
+			<c:choose>
+				<c:when test="${usuario.id == -1}">
+					<form:button type="submit">Crear</form:button>
+				</c:when>
+				<c:otherwise>
+					<form:button type="submit">Modificar</form:button>
+				</c:otherwise>
+			</c:choose>
+		</form:form>
+		<form:form action="usuario/altasbajas" modelAttribute="usuario">
+			<form:hidden path="id"/>
+			<c:if test="${usuario.fechaBaja == null && usuario.id != -1}">
+				<form:button type="submit">Dar de baja</form:button>
+			</c:if>
+			<c:if test="${usuario.fechaBaja != null && usuario.id != -1}">
+				<form:button type="submit">Dar de alta</form:button>
+			</c:if>
+		</form:form>
+		<form:form action="usuario/eliminar" modelAttribute="usuario">
+			<form:hidden path="id"/>
+			<form:button type="submit">Eliminar</form:button>
+		</form:form>
 		</div>
 		
-	</div> <!-- inner -->
-</div> <!-- outer -->
-
-</body>
-</html>
+<%@ include file="../includes/footer.jsp" %>

@@ -1,29 +1,4 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
-
-<!-- Custom -->
-<link href="resources/css/custom.css" rel="stylesheet">
-
-<html>
-<head>
-	<title>Proyecto 1D6</title>
-</head>
-<body>
-
-<div class="outer">
-	<div class="inner">
-
-		<div id="navbar">
-			<span id="navbutton">
-				<a href="/formacion">Home</a>
-			</span> 
-			<span id="navbutton">
-				<a href="/formacion/estadisticas">Estadísticas</a>
-			</span> 
-			<span id="navbutleft"> 
-				<a href="/formacion/admin">Admin</a>
-			</span>
-		</div>
+<%@ include file="../includes/header.jsp" %>
 			
 		<div id="cabecera">
 			<h1>
@@ -43,13 +18,11 @@
 				<li>Jesulin (2 lanzamientos)</li>
 			</ul>
 		</div>
-		<p>Crear nuevo usuario</p>
+		<a href="admin/usuario/edit">Crear nuevo usuario</a>
 		<br>
 		<br>
 		<hr>
 		<br>
-	</div> <!-- inner -->
-</div> <!-- outer -->
-
-</body>
-</html>
+		
+<%@ include file="../includes/footer.jsp" %>
+	
