@@ -14,7 +14,7 @@ public class ServiceEstadisticasImpl implements ServiceEstadisticas {
 
 	@Autowired
 	private DAOTirada daoTirada;
-	
+
 	@Override
 	public List<Estadistica> getEstadisticas() {
 		return daoTirada.getEstadisticas();
@@ -29,10 +29,15 @@ public class ServiceEstadisticasImpl implements ServiceEstadisticas {
 	public int total() {
 		return daoTirada.total();
 	}
-	
+
 	@Override
 	public List<Lanzamientos> getUltimos() {
 		return daoTirada.getUltimos();
+	}
+
+	@Override
+	public List<Lanzamientos> getUltimos(int n) {
+		return daoTirada.getUltimos(n);
 	}
 
 }

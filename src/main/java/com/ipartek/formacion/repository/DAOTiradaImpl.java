@@ -42,7 +42,7 @@ public class DAOTiradaImpl implements DAOTirada {
 		this.dataSource = ds;
 		this.jdbcTemplate = new JdbcTemplate(this.dataSource);
 	}
-	
+
 	private static final String SQL_GET_ALL = "SELECT `id`, `fecha`, `usuario_id` FROM `tirada` ORDER BY `id` DESC LIMIT 500;";
 	private static final String SQL_GET_BY_ID = "SELECT `id`, `fecha`, `usuario_id` FROM `usuario` WHERE `id` = ?";
 	private static final String SQL_GET_BY_USUARIO_ID = "SELECT `id`, `fecha`, `usuario_id` FROM `tirada` WHERE `usuario_id` = ? ORDER BY `id` DESC LIMIT 500;";
@@ -53,7 +53,10 @@ public class DAOTiradaImpl implements DAOTirada {
 	private static final String SQL_GET_ESTADISTICAS_TOTALES = "SELECT count(tirada.id) as Lanzamientos, usuario.nombre FROM tirada, usuario WHERE usuario.id = tirada.usuario_id GROUP BY usuario.nombre ORDER BY Lanzamientos DESC LIMIT 500;";
 	private static final String SQL_COUNT = "SELECT COUNT(id) FROM tirada;";
 	private static final String SQL_ULTIMAS_TIRADAS = "SELECT tirada.id, usuario.nombre, tirada.fecha FROM tirada, usuario WHERE usuario.id = tirada.usuario_id ORDER BY fecha DESC LIMIT 5;";
-	
+	private static final String SQL_ULTIMAS_TIRADAS_n1 = "SELECT tirada.id, usuario.nombre, tirada.fecha FROM tirada, usuario WHERE usuario.id = tirada.usuario_id ORDER BY fecha DESC LIMIT 1;";
+	private static final String SQL_ULTIMAS_TIRADAS_n2 = "SELECT tirada.id, usuario.nombre, tirada.fecha FROM tirada, usuario WHERE usuario.id = tirada.usuario_id ORDER BY fecha DESC LIMIT 2;";
+	private static final String SQL_ULTIMAS_TIRADAS_n3 = "SELECT tirada.id, usuario.nombre, tirada.fecha FROM tirada, usuario WHERE usuario.id = tirada.usuario_id ORDER BY fecha DESC LIMIT 3;";
+
 	@Override
 	public List<Tirada> getAll() {
 		ArrayList<Tirada> lista = new ArrayList<Tirada>();
@@ -71,7 +74,8 @@ public class DAOTiradaImpl implements DAOTirada {
 	public List<Tirada> getAllByUser(long idUsuario) {
 		ArrayList<Tirada> lista = new ArrayList<Tirada>();
 		try {
-			lista = (ArrayList<Tirada>) this.jdbcTemplate.query(SQL_GET_BY_USUARIO_ID,new Object[] {idUsuario}, new TiradaMapper());
+			lista = (ArrayList<Tirada>) this.jdbcTemplate.query(SQL_GET_BY_USUARIO_ID, new Object[] { idUsuario },
+					new TiradaMapper());
 		} catch (EmptyResultDataAccessException e) {
 			this.logger.warn("No existen tiradas todavia");
 		} catch (Exception e) {
@@ -157,7 +161,8 @@ public class DAOTiradaImpl implements DAOTirada {
 	public List<Estadistica> getEstadisticas() {
 		ArrayList<Estadistica> lista = new ArrayList<Estadistica>();
 		try {
-			lista = (ArrayList<Estadistica>) this.jdbcTemplate.query(SQL_GET_ESTADISTICAS_ACTIVAS, new EstadisticaMapper());
+			lista = (ArrayList<Estadistica>) this.jdbcTemplate.query(SQL_GET_ESTADISTICAS_ACTIVAS,
+					new EstadisticaMapper());
 		} catch (EmptyResultDataAccessException e) {
 			this.logger.warn("No hay estadisticas");
 		} catch (Exception e) {
@@ -170,7 +175,8 @@ public class DAOTiradaImpl implements DAOTirada {
 	public List<Estadistica> getEstadisticasTotales() {
 		ArrayList<Estadistica> lista = new ArrayList<Estadistica>();
 		try {
-			lista = (ArrayList<Estadistica>) this.jdbcTemplate.query(SQL_GET_ESTADISTICAS_TOTALES, new EstadisticaMapper());
+			lista = (ArrayList<Estadistica>) this.jdbcTemplate.query(SQL_GET_ESTADISTICAS_TOTALES,
+					new EstadisticaMapper());
 		} catch (EmptyResultDataAccessException e) {
 			this.logger.warn("No hay estadisticas");
 		} catch (Exception e) {
@@ -178,17 +184,46 @@ public class DAOTiradaImpl implements DAOTirada {
 		}
 		return lista;
 	}
-	
+
 	@Override
 	public int total() {
 		return this.jdbcTemplate.queryForInt(SQL_COUNT);
 	}
-	
+
 	@Override
 	public List<Lanzamientos> getUltimos() {
 		ArrayList<Lanzamientos> lista = new ArrayList<Lanzamientos>();
 		try {
 			lista = (ArrayList<Lanzamientos>) this.jdbcTemplate.query(SQL_ULTIMAS_TIRADAS, new LanzamientoMapper());
+		} catch (EmptyResultDataAccessException e) {
+			this.logger.warn("No existen tiradas todavia");
+		} catch (Exception e) {
+			this.logger.error(e.getMessage());
+		}
+		return lista;
+	}
+
+	@Override
+	public List<Lanzamientos> getUltimos(int n) {
+		ArrayList<Lanzamientos> lista = new ArrayList<Lanzamientos>();
+		try {
+			if (n == 1) {
+				lista = (ArrayList<Lanzamientos>) this.jdbcTemplate.query(SQL_ULTIMAS_TIRADAS_n1,
+						new LanzamientoMapper());
+			} else if (n == 2) {
+				lista = (ArrayList<Lanzamientos>) this.jdbcTemplate.query(SQL_ULTIMAS_TIRADAS_n2,
+						new LanzamientoMapper());
+			} else if (n == 3) {
+				lista = (ArrayList<Lanzamientos>) this.jdbcTemplate.query(SQL_ULTIMAS_TIRADAS_n3,
+						new LanzamientoMapper());
+			} else if (n > 3) {
+				lista = (ArrayList<Lanzamientos>) this.jdbcTemplate.query(SQL_ULTIMAS_TIRADAS_n3,
+						new LanzamientoMapper());
+				this.logger.warn("Valor de contador excesivo (mayor que 3, demasiados gifs) = " + n);
+			} else {
+				this.logger.warn("Valor de contador incorrecto (probablemente negativo) = " + n);
+			}
+
 		} catch (EmptyResultDataAccessException e) {
 			this.logger.warn("No existen tiradas todavia");
 		} catch (Exception e) {

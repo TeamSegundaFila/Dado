@@ -30,21 +30,25 @@
 		
 		
 		<c:if test="${afortunado != null}">
-		<div  class="row">
-			<div  class="col3-left">
-				<img id="imgmagic" src="resources/img/magic.gif" alt="Magia"/>
+			<div id="cabecera">
+				<h2>El afortunado lector voluntario será:</h2>
 			</div>
-			<div  class="col3-center">
-				<h2>El afortunado en leer es:  </h2>
-				<h2> ¡¡ ${afortunado} !! </h2>
-			</div>
-			<div  class="col3-right">
-				<img id="imgmagic" src="resources/img/magic.gif" alt="Magia"/>
-			</div>
-		</div>
-		<hr>
+			<c:forEach items="${ultimos}" var="u">
+				<div  class="row">
+					<div  class="col3-left">
+						<img id="imgmagic" src="resources/img/magic.gif" alt="Magia"/>
+					</div>
+					<div  class="col3-center">
+						<h1  class="ganador"> ¡¡ ${u.nombre} !! </h1>
+					</div>
+					<div  class="col3-right">
+						<img id="imgmagic" src="resources/img/magic.gif" alt="Magia"/>
+					</div>
+				</div>
+				<hr>
+			</c:forEach>
 		</c:if>
-		
+	
 		<br>
 		<br>
 

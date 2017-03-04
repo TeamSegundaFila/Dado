@@ -26,13 +26,15 @@ public class HomeController {
 
 	@Autowired
 	ServiceUsuario serviceUsuario;
-	
+
 	@Autowired
 	ServiceTirada serviceTirada;
-	
+
 	@Autowired
 	ServiceEstadisticas serviceEstadisticas;
-	
+
+	int contadorMagic;
+
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 	/**
@@ -44,10 +46,11 @@ public class HomeController {
 
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-
+		contadorMagic = 1;
 		String formattedDate = dateFormat.format(date);
-		model.addAttribute("estadisticas", serviceEstadisticas.getEstadisticas() );
+		model.addAttribute("estadisticas", serviceEstadisticas.getEstadisticas());
 		model.addAttribute("serverTime", formattedDate);
+		model.addAttribute("contadorMagic", contadorMagic);
 
 		return "home";
 	}
@@ -63,9 +66,16 @@ public class HomeController {
 		Usuario afortunado = serviceUsuario.LanzarDado();
 		Tirada t = new Tirada();
 		t.setUsuarioId(afortunado.getId());
+
 		serviceTirada.crear(t);
-		model.addAttribute("afortunado",afortunado.getNombre());
-		model.addAttribute("estadisticas", serviceEstadisticas.getEstadisticas() );
+		model.addAttribute("afortunado", afortunado.getNombre());
+		model.addAttribute("estadisticas", serviceEstadisticas.getEstadisticas());
+		model.addAttribute("ultimos", serviceEstadisticas.getUltimos(contadorMagic));
+		model.addAttribute("contadorMagic", contadorMagic);
+
+		if (contadorMagic < 3) {
+			contadorMagic++;
+		}
 
 		return "home";
 	}

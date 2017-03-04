@@ -8,11 +8,13 @@ import com.ipartek.formacion.domain.Lanzamientos;
 public interface ServiceEstadisticas {
 
 	List<Estadistica> getEstadisticas();
-	
+
 	List<Estadistica> getEstadisticasTotales();
-	
+
 	int total();
 
 	List<Lanzamientos> getUltimos();
-	
+
+	List<Lanzamientos> getUltimos(int n);
+
 }

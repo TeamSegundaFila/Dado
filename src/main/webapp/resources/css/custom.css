@@ -6,6 +6,19 @@ body{
 }
 
 /*
+* Efecto brillo
+*/
+.ganador {
+	text-align:center;
+    -webkit-animation: glow .5s infinite alternate;
+}
+@-webkit-keyframes glow {
+    to {
+        text-shadow: 0 0 15px Purple;
+    }
+}
+
+/*
 * Estilo de texto
 */
 h1, h2, h3, h4, h5, h6 {
@@ -37,6 +50,7 @@ span{
 	background-color:LightSteelBlue;
 	padding:2em;
 	overflow:hidden;
+	border-radius:0.5em;
 }
 
 
@@ -148,7 +162,9 @@ span{
 #imgmagic {
 	height:15em;
     border-radius:0.5em;
-    margin:1em;
+
+    display: block;
+    margin: 1em auto;
 }
 
 #imghackerman {

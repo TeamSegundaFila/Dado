@@ -23,7 +23,7 @@ public interface DAOTirada {
 	boolean update(Tirada t);
 
 	boolean delete(long id);
-	
+
 	List<Estadistica> getEstadisticas();
 
 	List<Estadistica> getEstadisticasTotales();
@@ -31,5 +31,7 @@ public interface DAOTirada {
 	int total();
 
 	List<Lanzamientos> getUltimos();
+
+	List<Lanzamientos> getUltimos(int n);
 
 }
