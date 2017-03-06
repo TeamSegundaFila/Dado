@@ -30,7 +30,7 @@ public interface ServiceUsuario {
 	/**
 	 * Método que devuelve un objeto Usuario de la BBDD, correspondiente al
 	 * parámetro id que se le pasa como input
-	 * 
+	 * @param id
 	 * @return - Objeto Usuario escogido de la BBDD
 	 */
 	Usuario buscarPorId(long id);

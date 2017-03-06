@@ -27,7 +27,7 @@
 					<h3>Frecuencia resultados</h3>
 					<ul>
 						<c:forEach items="${estadisticasTotales}" var="t">
-							<li>${t.nombre} - ${t.contador}</li>
+							<li>${t.nombre} -<b>${t.contador}</b> - ${t.contador/total*100}%</li>
 						</c:forEach>
 		
 					</ul>
