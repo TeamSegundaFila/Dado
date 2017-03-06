@@ -7,9 +7,9 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.ipartek.formacion.domain.Estadistica;
 
-public class EstadisticaMapper implements RowMapper<Estadistica>{
+public class EstadisticaMapper implements RowMapper<Estadistica> {
 
-	@Override
+	@Override()
 	public Estadistica mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Estadistica e = new Estadistica();
 

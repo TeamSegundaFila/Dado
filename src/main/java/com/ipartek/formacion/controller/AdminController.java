@@ -11,71 +11,85 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ipartek.formacion.domain.Usuario;
 import com.ipartek.formacion.service.ServiceUsuario;
-
-@Controller
+/**
+ * Controlador para Administraion de usuarios
+ * @author Curso
+ *
+ */
+@Controller()
 public class AdminController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
+	private static final Logger LOG = LoggerFactory.getLogger(AdminController.class);
 	
-	@Autowired
-	ServiceUsuario serviceUsuario;
-	
+	@Autowired()
+	private ServiceUsuario serviceUsuario;
+	/**
+	 * Listar todos los usuarios
+	 * @param model atributos para la vista
+	 * @return al index.jsp
+	 */
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String listar(Model model) {
-		logger.info("Entrando en admin");
-		model.addAttribute("usuarios", serviceUsuario.listar());
+		LOG.info("Entrando en admin");
+		model.addAttribute("usuarios", this.serviceUsuario.listar());
 		return "admin/index";
 	}
 	
 	@RequestMapping(value = "/admin/usuario/edit", method = RequestMethod.GET)
-	public String FormularioCrear(Model model) {
-		logger.info("Entrando en admin");
+	public String formularioCrear(Model model) {
+		LOG.info("Entrando en admin");
 		
 		model.addAttribute("usuario", new Usuario());
 		return "admin/form";
 	}
 	
 	@RequestMapping(value = "/admin/usuario/edit/{id}", method = RequestMethod.GET)
-	public String FormularioEditar(Model model, @PathVariable int id) {
-		logger.info("Entrando en admin");
+	public String formularioEditar(Model model, @PathVariable() int id) {
+		LOG.info("Entrando en admin");
 		
-		model.addAttribute("usuario", serviceUsuario.buscarPorId(id));
+		model.addAttribute("usuario", this.serviceUsuario.buscarPorId(id));
 		return "admin/form";
 	}
 	
 	@RequestMapping(value = "usuario/crear", method = RequestMethod.POST)
 	public String crear(Model model, Usuario u) {
-		logger.info("Entrando en admin");
+		LOG.info("Entrando en admin");
 		
 		if (u.getId() == -1) {
-			serviceUsuario.crear(u);
+			this.serviceUsuario.crear(u);
 		} else {
-			serviceUsuario.modificar(u);
+			this.serviceUsuario.modificar(u);
 		}
 		
-		model.addAttribute("usuario", serviceUsuario.buscarPorId(u.getId()));
+		model.addAttribute("usuario", this.serviceUsuario.buscarPorId(u.getId()));
 		return "admin/form";
 	}
 	
+	/**
+	 * Modificar el estado del usuario a alta o baja
+	 * @param model atributos para la vista
+	 * @param u usuario a modificar
+	 * @return vista del formulario
+	 */
 	@RequestMapping(value = "usuario/altasbajas", method = RequestMethod.POST)
 	public String altaBaja(Model model, Usuario u) {
-		logger.info("Entrando en admin");
+		LOG.info("Entrando en admin");
 		
 		if (u.getFechaBaja().equals("")) {
-			serviceUsuario.darBaja(u.getId());
+			this.serviceUsuario.darBaja(u.getId());
 		} else {
-			serviceUsuario.darAlta(u.getId());
+			this.serviceUsuario.darAlta(u.getId());
 		}
-		model.addAttribute("usuario", serviceUsuario.buscarPorId(u.getId()));
+		model.addAttribute("usuario", this.serviceUsuario.buscarPorId(u.getId()));
 		return "admin/form";
 	}
 	
 	@RequestMapping(value = "usuario/eliminar", method = RequestMethod.POST)
 	public String eliminar(Model model, Usuario u) {
-		logger.info("Entrando en admin");
-		serviceUsuario.eliminar(u.getId());
+		LOG.info("Entrando en admin");
+		this.serviceUsuario.eliminar(u.getId());
 		model.addAttribute("usuario", new Usuario());
-		model.addAttribute("usuarios", serviceUsuario.listar());
+		model.addAttribute("usuarios", this.serviceUsuario.listar());
 		return "admin/index";
 	}
 

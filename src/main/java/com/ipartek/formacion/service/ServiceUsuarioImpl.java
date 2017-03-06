@@ -11,55 +11,55 @@ import org.springframework.stereotype.Service;
 import com.ipartek.formacion.domain.Usuario;
 import com.ipartek.formacion.repository.DAOUsuario;
 
-@Service("serviceUsuario")
+@Service(value ="serviceUsuario")
 public class ServiceUsuarioImpl implements ServiceUsuario {
 
 	private final Log logger = LogFactory.getLog(getClass());
 	
-	@Autowired
+	@Autowired()
 	private DAOUsuario daoUsuario;
 	
-	@Override
+	@Override()
 	public List<Usuario> listar() {
-		return daoUsuario.getAll();
+		return this.daoUsuario.getAll();
 	}
 
-	@Override
+	@Override()
 	public Usuario buscarPorId(long id) {
-		return daoUsuario.getById(id);
+		return this.daoUsuario.getById(id);
 	}
 
-	@Override
+	@Override()
 	public boolean crear(Usuario u) {
-		return daoUsuario.insert(u);
+		return this.daoUsuario.insert(u);
 	}
 
-	@Override
+	@Override()
 	public boolean modificar(Usuario u) {
-		return daoUsuario.update(u);
+		return this.daoUsuario.update(u);
 	}
 
-	@Override
+	@Override()
 	public boolean eliminar(long id) {
-		return daoUsuario.delete(id);
+		return this.daoUsuario.delete(id);
 	}
 
-	@Override
+	@Override()
 	public boolean darBaja(long id) {
-		return daoUsuario.darBaja(id);
+		return this.daoUsuario.darBaja(id);
 	}
 
-	@Override
+	@Override()
 	public boolean darAlta(long id) {
-		return daoUsuario.darAlta(id);
+		return this.daoUsuario.darAlta(id);
 	}
 
-	@Override
-	public Usuario LanzarDado() {
-		ArrayList<Usuario> pringados = (ArrayList<Usuario>) daoUsuario.getAllUsuariosDeAlta();
+	@Override()
+	public Usuario lanzarDado() {
+		ArrayList<Usuario> pringados = (ArrayList<Usuario>) this.daoUsuario.getAllUsuariosDeAlta();
 		double aleatorio = Math.round(Math.random()*(pringados.size()-1));
 		int n = (int) aleatorio;
-		logger.info("Sacando valor n:" + n + " y aleatorio " + aleatorio);
+		this.logger.info("Sacando valor n:" + n + " y aleatorio " + aleatorio);
 		return pringados.get(n);
 	}
 

@@ -13,7 +13,7 @@ public class Lanzamientos {
 	}
 	
 	public long getId() {
-		return id;
+		return this.id;
 	}
 
 
@@ -23,21 +23,21 @@ public class Lanzamientos {
 	}
 
 	public String getNombre() {
-		return nombre;
+		return this.nombre;
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 	public String getFecha() {
-		return fecha;
+		return this.fecha;
 	}
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 
-	@Override
+	@Override()
 	public String toString() {
-		return "Lanzamientos [id=" + id + ", nombre=" + nombre + ", fecha=" + fecha + "]";
+		return "Lanzamientos [id=" + this.id + ", nombre=" + this.nombre + ", fecha=" + this.fecha + "]";
 	}
 
 	

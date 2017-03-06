@@ -21,7 +21,7 @@ public class Usuario {
 	
 	
 	public long getId() {
-		return id;
+		return this.id;
 	}
 
 
@@ -33,7 +33,7 @@ public class Usuario {
 
 
 	public String getNombre() {
-		return nombre;
+		return this.nombre;
 	}
 
 
@@ -46,7 +46,7 @@ public class Usuario {
 
 
 	public String getFechaAlta() {
-		return fechaAlta;
+		return this.fechaAlta;
 	}
 
 
@@ -58,7 +58,7 @@ public class Usuario {
 
 
 	public String getFechaModificacion() {
-		return fechaModificacion;
+		return this.fechaModificacion;
 	}
 
 
@@ -70,7 +70,7 @@ public class Usuario {
 
 
 	public String getFechaBaja() {
-		return fechaBaja;
+		return this.fechaBaja;
 	}
 
 
@@ -81,10 +81,10 @@ public class Usuario {
 
 
 
-	@Override
+	@Override()
 	public String toString() {
-		return "Usuario [nombre=" + nombre + ", fechaAlta=" + fechaAlta + ", fechaModificacion=" + fechaModificacion
-				+ ", fechaBaja=" + fechaBaja + "]";
+		return "Usuario [nombre=" + this.nombre + ", fechaAlta=" + this.fechaAlta + ", fechaModificacion=" + this.fechaModificacion
+				+ ", fechaBaja=" + this.fechaBaja + "]";
 	}
 	
 	

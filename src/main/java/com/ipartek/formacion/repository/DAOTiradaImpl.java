@@ -27,17 +27,17 @@ import com.ipartek.formacion.repository.mapper.EstadisticaMapper;
 import com.ipartek.formacion.repository.mapper.LanzamientoMapper;
 import com.ipartek.formacion.repository.mapper.TiradaMapper;
 
-@Repository("daoTirada")
+@Repository(value ="daoTirada")
 public class DAOTiradaImpl implements DAOTirada {
 
 	private final Log logger = LogFactory.getLog(getClass());
 
-	@Autowired
+	@Autowired()
 	private DataSource dataSource;
 	private JdbcTemplate jdbcTemplate;
 
-	@Autowired
-	@Override
+	@Autowired()
+	@Override()
 	public void setDatasource(DataSource ds) {
 		this.dataSource = ds;
 		this.jdbcTemplate = new JdbcTemplate(this.dataSource);
@@ -53,11 +53,15 @@ public class DAOTiradaImpl implements DAOTirada {
 	private static final String SQL_GET_ESTADISTICAS_TOTALES = "SELECT count(tirada.id) as Lanzamientos, usuario.nombre FROM tirada, usuario WHERE usuario.id = tirada.usuario_id GROUP BY usuario.nombre ORDER BY Lanzamientos DESC LIMIT 500;";
 	private static final String SQL_COUNT = "SELECT COUNT(id) FROM tirada;";
 	private static final String SQL_ULTIMAS_TIRADAS = "SELECT tirada.id, usuario.nombre, tirada.fecha FROM tirada, usuario WHERE usuario.id = tirada.usuario_id ORDER BY fecha DESC LIMIT 5;";
-	private static final String SQL_ULTIMAS_TIRADAS_n1 = "SELECT tirada.id, usuario.nombre, tirada.fecha FROM tirada, usuario WHERE usuario.id = tirada.usuario_id ORDER BY fecha DESC LIMIT 1;";
-	private static final String SQL_ULTIMAS_TIRADAS_n2 = "SELECT tirada.id, usuario.nombre, tirada.fecha FROM tirada, usuario WHERE usuario.id = tirada.usuario_id ORDER BY fecha DESC LIMIT 2;";
-	private static final String SQL_ULTIMAS_TIRADAS_n3 = "SELECT tirada.id, usuario.nombre, tirada.fecha FROM tirada, usuario WHERE usuario.id = tirada.usuario_id ORDER BY fecha DESC LIMIT 3;";
+	private static final String SQL_ULTIMAS_TIRADAS_N1 = "SELECT tirada.id, usuario.nombre, tirada.fecha FROM tirada, usuario WHERE usuario.id = tirada.usuario_id ORDER BY fecha DESC LIMIT 1;";
+	private static final String SQL_ULTIMAS_TIRADAS_N2 = "SELECT tirada.id, usuario.nombre, tirada.fecha FROM tirada, usuario WHERE usuario.id = tirada.usuario_id ORDER BY fecha DESC LIMIT 2;";
+	private static final String SQL_ULTIMAS_TIRADAS_N3 = "SELECT tirada.id, usuario.nombre, tirada.fecha FROM tirada, usuario WHERE usuario.id = tirada.usuario_id ORDER BY fecha DESC LIMIT 3;";
 
-	@Override
+	private static final int NUMERO_MAGICO_1 = 1;
+	private static final int NUMERO_MAGICO_2 = 2;
+	private static final int NUMERO_MAGICO_3 = 3;
+	
+	@Override()
 	public List<Tirada> getAll() {
 		ArrayList<Tirada> lista = new ArrayList<Tirada>();
 		try {
@@ -70,7 +74,7 @@ public class DAOTiradaImpl implements DAOTirada {
 		return lista;
 	}
 
-	@Override
+	@Override()
 	public List<Tirada> getAllByUser(long idUsuario) {
 		ArrayList<Tirada> lista = new ArrayList<Tirada>();
 		try {
@@ -84,7 +88,7 @@ public class DAOTiradaImpl implements DAOTirada {
 		return lista;
 	}
 
-	@Override
+	@Override()
 	public Tirada getById(long id) {
 		Tirada t = null;
 		try {
@@ -98,7 +102,7 @@ public class DAOTiradaImpl implements DAOTirada {
 		return t;
 	}
 
-	@Override
+	@Override()
 	public boolean insert(final Tirada t) {
 		boolean resul = false;
 		try {
@@ -106,7 +110,7 @@ public class DAOTiradaImpl implements DAOTirada {
 			KeyHolder keyHolder = new GeneratedKeyHolder();
 
 			affectedRows = this.jdbcTemplate.update(new PreparedStatementCreator() {
-				@Override
+				@Override()
 				public PreparedStatement createPreparedStatement(Connection conn) throws SQLException {
 					final PreparedStatement ps = conn.prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS);
 					ps.setLong(1, t.getUsuarioId());
@@ -125,7 +129,7 @@ public class DAOTiradaImpl implements DAOTirada {
 		return resul;
 	}
 
-	@Override
+	@Override()
 	public boolean update(Tirada t) {
 		boolean resul = false;
 		int affectedRows = -1;
@@ -141,7 +145,7 @@ public class DAOTiradaImpl implements DAOTirada {
 		return resul;
 	}
 
-	@Override
+	@Override()
 	public boolean delete(long id) {
 		boolean resul = false;
 		try {
@@ -157,7 +161,7 @@ public class DAOTiradaImpl implements DAOTirada {
 		return resul;
 	}
 
-	@Override
+	@Override()
 	public List<Estadistica> getEstadisticas() {
 		ArrayList<Estadistica> lista = new ArrayList<Estadistica>();
 		try {
@@ -171,7 +175,7 @@ public class DAOTiradaImpl implements DAOTirada {
 		return lista;
 	}
 
-	@Override
+	@Override()
 	public List<Estadistica> getEstadisticasTotales() {
 		ArrayList<Estadistica> lista = new ArrayList<Estadistica>();
 		try {
@@ -185,12 +189,12 @@ public class DAOTiradaImpl implements DAOTirada {
 		return lista;
 	}
 
-	@Override
+	@Override()
 	public int total() {
 		return this.jdbcTemplate.queryForInt(SQL_COUNT);
 	}
 
-	@Override
+	@Override()
 	public List<Lanzamientos> getUltimos() {
 		ArrayList<Lanzamientos> lista = new ArrayList<Lanzamientos>();
 		try {
@@ -203,21 +207,21 @@ public class DAOTiradaImpl implements DAOTirada {
 		return lista;
 	}
 
-	@Override
+	@Override()
 	public List<Lanzamientos> getUltimos(int n) {
 		ArrayList<Lanzamientos> lista = new ArrayList<Lanzamientos>();
 		try {
-			if (n == 1) {
-				lista = (ArrayList<Lanzamientos>) this.jdbcTemplate.query(SQL_ULTIMAS_TIRADAS_n1,
+			if (n == NUMERO_MAGICO_1) {
+				lista = (ArrayList<Lanzamientos>) this.jdbcTemplate.query(SQL_ULTIMAS_TIRADAS_N1,
 						new LanzamientoMapper());
-			} else if (n == 2) {
-				lista = (ArrayList<Lanzamientos>) this.jdbcTemplate.query(SQL_ULTIMAS_TIRADAS_n2,
+			} else if (n == NUMERO_MAGICO_2) {
+				lista = (ArrayList<Lanzamientos>) this.jdbcTemplate.query(SQL_ULTIMAS_TIRADAS_N2,
 						new LanzamientoMapper());
-			} else if (n == 3) {
-				lista = (ArrayList<Lanzamientos>) this.jdbcTemplate.query(SQL_ULTIMAS_TIRADAS_n3,
+			} else if (n == NUMERO_MAGICO_3) {
+				lista = (ArrayList<Lanzamientos>) this.jdbcTemplate.query(SQL_ULTIMAS_TIRADAS_N3,
 						new LanzamientoMapper());
-			} else if (n > 3) {
-				lista = (ArrayList<Lanzamientos>) this.jdbcTemplate.query(SQL_ULTIMAS_TIRADAS_n3,
+			} else if (n > NUMERO_MAGICO_3) {
+				lista = (ArrayList<Lanzamientos>) this.jdbcTemplate.query(SQL_ULTIMAS_TIRADAS_N3,
 						new LanzamientoMapper());
 				this.logger.warn("Valor de contador excesivo (mayor que 3, demasiados gifs) = " + n);
 			} else {

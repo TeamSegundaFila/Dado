@@ -9,7 +9,7 @@ import com.ipartek.formacion.domain.Tirada;
 
 public class TiradaMapper implements RowMapper<Tirada> {
 
-	@Override
+	@Override()
 	public Tirada mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Tirada t = new Tirada();
 

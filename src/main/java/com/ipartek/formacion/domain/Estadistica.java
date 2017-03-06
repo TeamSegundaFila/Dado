@@ -12,7 +12,7 @@ public class Estadistica {
 	}
 
 	public String getNombre() {
-		return nombre;
+		return this.nombre;
 	}
 
 	public void setNombre(String nombre) {
@@ -20,16 +20,16 @@ public class Estadistica {
 	}
 
 	public int getContador() {
-		return contador;
+		return this.contador;
 	}
 
 	public void setContador(int contador) {
 		this.contador = contador;
 	}
 
-	@Override
+	@Override()
 	public String toString() {
-		return "Estadistica [nombre=" + nombre + ", contador=" + contador + "]";
+		return "Estadistica [nombre=" + this.nombre + ", contador=" + this.contador + "]";
 	}
 	
 }

@@ -7,9 +7,9 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.ipartek.formacion.domain.Lanzamientos;
 
-public class LanzamientoMapper implements RowMapper<Lanzamientos>{
+public class LanzamientoMapper implements RowMapper<Lanzamientos> {
 	
-	@Override
+	@Override()
 	public Lanzamientos mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Lanzamientos l = new Lanzamientos();
 		l.setId(rs.getLong("id"));

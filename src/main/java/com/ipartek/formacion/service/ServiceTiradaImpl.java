@@ -7,46 +7,46 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ipartek.formacion.domain.Estadistica;
 import com.ipartek.formacion.domain.Tirada;
 import com.ipartek.formacion.repository.DAOTirada;
 
-@Service("serviceTirada")
+@Service(value ="serviceTirada")
 public class ServiceTiradaImpl implements ServiceTirada {
 
 private final Log logger = LogFactory.getLog(getClass());
 	
-	@Autowired
+	@Autowired()
 	private DAOTirada daoTirada;
 	
-	@Override
+	@Override()
 	public List<Tirada> listar() {
-		return daoTirada.getAll();
+		this.logger.info("listar");
+		return this.daoTirada.getAll();
 	}
 
-	@Override
+	@Override()
 	public List<Tirada> listarPorUsuario(long idUsuario) {
-		return daoTirada.getAllByUser(idUsuario);
+		return this.daoTirada.getAllByUser(idUsuario);
 	}
 
-	@Override
+	@Override()
 	public Tirada buscarPorId(long id) {
-		return daoTirada.getById(id);
+		return this.daoTirada.getById(id);
 	}
 
-	@Override
+	@Override()
 	public boolean crear(Tirada t) {
-		return daoTirada.insert(t);
+		return this.daoTirada.insert(t);
 	}
 
-	@Override
+	@Override()
 	public boolean modificar(Tirada t) {
-		return daoTirada.update(t);
+		return this.daoTirada.update(t);
 	}
 
-	@Override
+	@Override()
 	public boolean eliminar(long id) {
-		return daoTirada.delete(id);
+		return this.daoTirada.delete(id);
 	}
 
 }

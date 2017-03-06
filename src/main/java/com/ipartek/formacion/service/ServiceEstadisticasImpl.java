@@ -9,35 +9,35 @@ import com.ipartek.formacion.domain.Estadistica;
 import com.ipartek.formacion.domain.Lanzamientos;
 import com.ipartek.formacion.repository.DAOTirada;
 
-@Service("serviceEstadisticas")
+@Service(value ="serviceEstadisticas")
 public class ServiceEstadisticasImpl implements ServiceEstadisticas {
 
-	@Autowired
+	@Autowired()
 	private DAOTirada daoTirada;
 
-	@Override
+	@Override()
 	public List<Estadistica> getEstadisticas() {
-		return daoTirada.getEstadisticas();
+		return this.daoTirada.getEstadisticas();
 	}
 
-	@Override
+	@Override()
 	public List<Estadistica> getEstadisticasTotales() {
-		return daoTirada.getEstadisticasTotales();
+		return this.daoTirada.getEstadisticasTotales();
 	}
 
-	@Override
+	@Override()
 	public int total() {
-		return daoTirada.total();
+		return this.daoTirada.total();
 	}
 
-	@Override
+	@Override()
 	public List<Lanzamientos> getUltimos() {
-		return daoTirada.getUltimos();
+		return this.daoTirada.getUltimos();
 	}
 
-	@Override
+	@Override()
 	public List<Lanzamientos> getUltimos(int n) {
-		return daoTirada.getUltimos(n);
+		return this.daoTirada.getUltimos(n);
 	}
 
 }

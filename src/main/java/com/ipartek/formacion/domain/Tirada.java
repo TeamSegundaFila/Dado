@@ -16,7 +16,7 @@ public class Tirada {
 	}
 
 	public long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(long id) {
@@ -24,7 +24,7 @@ public class Tirada {
 	}
 
 	public Date getFechaLanzamiento() {
-		return fechaLanzamiento;
+		return this.fechaLanzamiento;
 	}
 
 	public void setFechaLanzamiento(Date fechaLanzamiento) {
@@ -32,16 +32,16 @@ public class Tirada {
 	}
 
 	public long getUsuarioId() {
-		return usuarioId;
+		return this.usuarioId;
 	}
 
 	public void setUsuarioId(long usuarioid) {
 		this.usuarioId = usuarioid;
 	}
 
-	@Override
+	@Override()
 	public String toString() {
-		return "Tirada [id=" + id + ", fechaLanzamiento=" + fechaLanzamiento + ", usuarioid=" + usuarioId + "]";
+		return "Tirada [id=" + this.id + ", fechaLanzamiento=" + this.fechaLanzamiento + ", usuarioid=" + this.usuarioId + "]";
 	}
 	
 	
