@@ -10,14 +10,20 @@ import org.springframework.stereotype.Service;
 import com.ipartek.formacion.domain.Tirada;
 import com.ipartek.formacion.repository.DAOTirada;
 
-@Service(value ="serviceTirada")
+/**
+ * Implementación del servicio Tirada
+ * 
+ * @author Curso
+ *
+ */
+@Service(value = "serviceTirada")
 public class ServiceTiradaImpl implements ServiceTirada {
 
-private final Log logger = LogFactory.getLog(getClass());
-	
+	private final Log logger = LogFactory.getLog(getClass());
+
 	@Autowired()
 	private DAOTirada daoTirada;
-	
+
 	@Override()
 	public List<Tirada> listar() {
 		this.logger.info("listar");

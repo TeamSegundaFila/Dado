@@ -23,7 +23,13 @@ import org.springframework.stereotype.Repository;
 import com.ipartek.formacion.domain.Usuario;
 import com.ipartek.formacion.repository.mapper.UsuarioMapper;
 
-@Repository(value ="daoUsuario")
+/**
+ * Implementación de la DAO(Data Access Object) del Usuario
+ * 
+ * @author Curso
+ *
+ */
+@Repository(value = "daoUsuario")
 public class DAOUsuarioImpl implements DAOUsuario {
 
 	private final Log logger = LogFactory.getLog(getClass());
@@ -38,7 +44,7 @@ public class DAOUsuarioImpl implements DAOUsuario {
 		this.dataSource = ds;
 		this.jdbcTemplate = new JdbcTemplate(this.dataSource);
 	}
-	
+
 	private static final String SQL_GET_ALL = "SELECT `id`, `nombre`, `fecha_alta`, `fecha_modificacion`, `fecha_baja` FROM `usuario` ORDER BY `id` DESC LIMIT 500;";
 	private static final String SQL_GET_BY_ID = "SELECT `id`, `nombre`, `fecha_alta`, `fecha_modificacion`, `fecha_baja` FROM `usuario` WHERE `id` = ?";
 	private static final String SQL_INSERT = "INSERT INTO `usuario` (`nombre`) VALUES (?);";
@@ -47,7 +53,7 @@ public class DAOUsuarioImpl implements DAOUsuario {
 	private static final String SQL_BAJA_USUARIO = "UPDATE `usuario` SET `fecha_modificacion`= CURRENT_TIMESTAMP , `fecha_baja`= CURRENT_TIMESTAMP WHERE `id`= ? ;";
 	private static final String SQL_ALTA_USUARIO = "UPDATE `usuario` SET  `fecha_modificacion`= CURRENT_TIMESTAMP , `fecha_baja`= null WHERE `id`= ? ;";
 	private static final String SQL_GET_ALL_ALTAS = "SELECT `id`, `nombre`, `fecha_alta`, `fecha_modificacion`, `fecha_baja` FROM `usuario` WHERE `fecha_baja` IS NULL  ORDER BY `id` DESC LIMIT 500;";
-	
+
 	@Override()
 	public List<Usuario> getAll() {
 		ArrayList<Usuario> lista = new ArrayList<Usuario>();
@@ -65,7 +71,7 @@ public class DAOUsuarioImpl implements DAOUsuario {
 	public List<Usuario> getAllUsuariosDeAlta() {
 		ArrayList<Usuario> lista = new ArrayList<Usuario>();
 		try {
-			lista = (ArrayList<Usuario>) this.jdbcTemplate.query(SQL_GET_ALL_ALTAS,new UsuarioMapper());
+			lista = (ArrayList<Usuario>) this.jdbcTemplate.query(SQL_GET_ALL_ALTAS, new UsuarioMapper());
 		} catch (EmptyResultDataAccessException e) {
 			this.logger.warn("No existen usuarios todavia");
 		} catch (Exception e) {
@@ -73,7 +79,7 @@ public class DAOUsuarioImpl implements DAOUsuario {
 		}
 		return lista;
 	}
-	
+
 	@Override()
 	public Usuario getById(long id) {
 		Usuario u = null;

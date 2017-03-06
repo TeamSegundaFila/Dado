@@ -7,6 +7,12 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.ipartek.formacion.domain.Estadistica;
 
+/**
+ * Mapeador del resulset un objeto Estadistica
+ * 
+ * @author Curso
+ *
+ */
 public class EstadisticaMapper implements RowMapper<Estadistica> {
 
 	@Override()
@@ -17,5 +23,5 @@ public class EstadisticaMapper implements RowMapper<Estadistica> {
 		e.setContador(rs.getInt("lanzamientos"));
 		return e;
 	}
-	
+
 }

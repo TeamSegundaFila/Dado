@@ -9,7 +9,13 @@ import com.ipartek.formacion.domain.Estadistica;
 import com.ipartek.formacion.domain.Lanzamientos;
 import com.ipartek.formacion.repository.DAOTirada;
 
-@Service(value ="serviceEstadisticas")
+/**
+ * Implementacion de la interfaz del servicio de Estadísticas
+ * 
+ * @author Curso
+ *
+ */
+@Service(value = "serviceEstadisticas")
 public class ServiceEstadisticasImpl implements ServiceEstadisticas {
 
 	@Autowired()

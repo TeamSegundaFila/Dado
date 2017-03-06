@@ -11,21 +11,26 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ipartek.formacion.domain.Usuario;
 import com.ipartek.formacion.service.ServiceUsuario;
+
 /**
  * Controlador para Administraion de usuarios
+ * 
  * @author Curso
  *
  */
 @Controller()
 public class AdminController {
-	
+
 	private static final Logger LOG = LoggerFactory.getLogger(AdminController.class);
-	
+
 	@Autowired()
 	private ServiceUsuario serviceUsuario;
+
 	/**
 	 * Listar todos los usuarios
-	 * @param model atributos para la vista
+	 * 
+	 * @param model
+	 *            atributos para la vista
 	 * @return al index.jsp
 	 */
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
@@ -34,20 +39,24 @@ public class AdminController {
 		model.addAttribute("usuarios", this.serviceUsuario.listar());
 		return "admin/index";
 	}
+
 	/**
 	 * Abre el formulario con un usuario nuevo para poder crearlo
+	 * 
 	 * @param model
 	 * @return al form.jsp
 	 */
 	@RequestMapping(value = "/admin/usuario/edit", method = RequestMethod.GET)
 	public String formularioCrear(Model model) {
 		LOG.info("Entrando en admin");
-		
+
 		model.addAttribute("usuario", new Usuario());
 		return "admin/form";
 	}
+
 	/**
 	 * Abre el formulario con un usuario para modificarlo/eliminarlo
+	 * 
 	 * @param model
 	 * @param id
 	 * @return al form.jsp
@@ -55,12 +64,14 @@ public class AdminController {
 	@RequestMapping(value = "/admin/usuario/edit/{id}", method = RequestMethod.GET)
 	public String formularioEditar(Model model, @PathVariable() int id) {
 		LOG.info("Entrando en admin");
-		
+
 		model.addAttribute("usuario", this.serviceUsuario.buscarPorId(id));
 		return "admin/form";
 	}
+
 	/**
 	 * Llama al servicio para crear o modificar el usuario
+	 * 
 	 * @param model
 	 * @param u
 	 * @return index.jsp
@@ -80,11 +91,14 @@ public class AdminController {
 		model.addAttribute("usuarios", this.serviceUsuario.listar());
 		return "admin/index";
 	}
-	
+
 	/**
 	 * Modificar el estado del usuario a alta o baja
-	 * @param model atributos para la vista
-	 * @param u usuario a modificar
+	 * 
+	 * @param model
+	 *            atributos para la vista
+	 * @param u
+	 *            usuario a modificar
 	 * @return vista del formulario
 	 */
 	@RequestMapping(value = "usuario/altasbajas", method = RequestMethod.POST)
@@ -102,11 +116,15 @@ public class AdminController {
 		model.addAttribute("usuario", this.serviceUsuario.buscarPorId(u.getId()));
 		return "admin/form";
 	}
+
 	/**
 	 * Elimina al usuario
+	 * 
 	 * @param model
+	 *            model de modelo
 	 * @param u
-	 * @return index.jsp
+	 *            de usuario
+	 * @return index.jsp returnea al index
 	 */
 	@RequestMapping(value = "usuario/eliminar", method = RequestMethod.POST)
 	public String eliminar(Model model, Usuario u) {
@@ -121,5 +139,4 @@ public class AdminController {
 		return "admin/index";
 	}
 
-	
 }

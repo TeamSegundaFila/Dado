@@ -7,6 +7,12 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.ipartek.formacion.domain.Tirada;
 
+/**
+ * Mapeador del Resultset a un objeto Tirada
+ * 
+ * @author Curso
+ *
+ */
 public class TiradaMapper implements RowMapper<Tirada> {
 
 	@Override()

@@ -11,14 +11,20 @@ import org.springframework.stereotype.Service;
 import com.ipartek.formacion.domain.Usuario;
 import com.ipartek.formacion.repository.DAOUsuario;
 
-@Service(value ="serviceUsuario")
+/**
+ * Implementación del servicio del Usuario
+ * 
+ * @author Curso
+ *
+ */
+@Service(value = "serviceUsuario")
 public class ServiceUsuarioImpl implements ServiceUsuario {
 
 	private final Log logger = LogFactory.getLog(getClass());
-	
+
 	@Autowired()
 	private DAOUsuario daoUsuario;
-	
+
 	@Override()
 	public List<Usuario> listar() {
 		return this.daoUsuario.getAll();
@@ -57,12 +63,10 @@ public class ServiceUsuarioImpl implements ServiceUsuario {
 	@Override()
 	public Usuario lanzarDado() {
 		ArrayList<Usuario> pringados = (ArrayList<Usuario>) this.daoUsuario.getAllUsuariosDeAlta();
-		double aleatorio = Math.round(Math.random()*(pringados.size()-1));
+		double aleatorio = Math.round(Math.random() * (pringados.size() - 1));
 		int n = (int) aleatorio;
 		this.logger.info("Sacando valor n:" + n + " y aleatorio " + aleatorio);
 		return pringados.get(n);
 	}
-
-	
 
 }

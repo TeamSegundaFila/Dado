@@ -7,6 +7,12 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.ipartek.formacion.domain.Usuario;
 
+/**
+ * Mapeador del Resultset a un objeto Usuario
+ * 
+ * @author Curso
+ *
+ */
 public class UsuarioMapper implements RowMapper<Usuario> {
 
 	@Override()
