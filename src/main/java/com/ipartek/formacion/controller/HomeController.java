@@ -60,7 +60,12 @@ public class HomeController {
 
 		return "home";
 	}
-
+	/**
+	 * Lanza el dado y escoge una persona activa
+	 * @param locale
+	 * @param model
+	 * @return home.jsp
+	 */
 	@RequestMapping(value = "/lanzar", method = RequestMethod.GET)
 	public String tirarDado(Locale locale, Model model) {
 		LOG.info("Lanzar dado");
@@ -85,7 +90,11 @@ public class HomeController {
 
 		return "home";
 	}
-
+	/**
+	 * Carga las estadisticas de las tiradas
+	 * @param model
+	 * @return estadisticas.jsp
+	 */
 	@RequestMapping(value = "/estadisticas", method = RequestMethod.GET)
 	public String listarEstadisticas(Model model) {
 		LOG.info("Listando página de estadisticas");

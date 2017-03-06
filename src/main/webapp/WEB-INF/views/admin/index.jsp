@@ -10,7 +10,8 @@
 				Listado Usuarios
 			</h3>
 		</div>
-		
+		<p>${msg}</p><br>
+		<a href="admin/usuario/edit">Crear nuevo usuario</a><br><br>
 		<div class="container">
 			<table class="tablePlugin" cellspacing="0" width="100%">
 				<thead>
@@ -35,7 +36,6 @@
 				</tbody>	
 			</table>
 		</div>
-		<a href="admin/usuario/edit">Crear nuevo usuario</a>
 		<br>
 		<br>
 		<hr>

@@ -34,7 +34,11 @@ public class AdminController {
 		model.addAttribute("usuarios", this.serviceUsuario.listar());
 		return "admin/index";
 	}
-	
+	/**
+	 * Abre el formulario con un usuario nuevo para poder crearlo
+	 * @param model
+	 * @return al form.jsp
+	 */
 	@RequestMapping(value = "/admin/usuario/edit", method = RequestMethod.GET)
 	public String formularioCrear(Model model) {
 		LOG.info("Entrando en admin");
@@ -42,7 +46,12 @@ public class AdminController {
 		model.addAttribute("usuario", new Usuario());
 		return "admin/form";
 	}
-	
+	/**
+	 * Abre el formulario con un usuario para modificarlo/eliminarlo
+	 * @param model
+	 * @param id
+	 * @return al form.jsp
+	 */
 	@RequestMapping(value = "/admin/usuario/edit/{id}", method = RequestMethod.GET)
 	public String formularioEditar(Model model, @PathVariable() int id) {
 		LOG.info("Entrando en admin");
@@ -50,19 +59,26 @@ public class AdminController {
 		model.addAttribute("usuario", this.serviceUsuario.buscarPorId(id));
 		return "admin/form";
 	}
-	
+	/**
+	 * Llama al servicio para crear o modificar el usuario
+	 * @param model
+	 * @param u
+	 * @return index.jsp
+	 */
 	@RequestMapping(value = "usuario/crear", method = RequestMethod.POST)
 	public String crear(Model model, Usuario u) {
 		LOG.info("Entrando en admin");
-		
+		String msg = "Error al modificar/crear Usuario";
 		if (u.getId() == -1) {
 			this.serviceUsuario.crear(u);
+			msg = "Usuario creado con exito";
 		} else {
 			this.serviceUsuario.modificar(u);
+			msg = "Usuario modificado con exito";
 		}
-		
-		model.addAttribute("usuario", this.serviceUsuario.buscarPorId(u.getId()));
-		return "admin/form";
+		model.addAttribute("msg", msg);
+		model.addAttribute("usuarios", this.serviceUsuario.listar());
+		return "admin/index";
 	}
 	
 	/**
@@ -74,20 +90,32 @@ public class AdminController {
 	@RequestMapping(value = "usuario/altasbajas", method = RequestMethod.POST)
 	public String altaBaja(Model model, Usuario u) {
 		LOG.info("Entrando en admin");
-		
-		if (u.getFechaBaja().equals("")) {
+		String msg = "Error al cambiar el estado del Usuario";
+		if ("".equals(u.getFechaBaja())) {
 			this.serviceUsuario.darBaja(u.getId());
+			msg = "Usuario dado de baja";
 		} else {
 			this.serviceUsuario.darAlta(u.getId());
+			msg = "Usuario dado de alta";
 		}
+		model.addAttribute("msg", msg);
 		model.addAttribute("usuario", this.serviceUsuario.buscarPorId(u.getId()));
 		return "admin/form";
 	}
-	
+	/**
+	 * Elimina al usuario
+	 * @param model
+	 * @param u
+	 * @return index.jsp
+	 */
 	@RequestMapping(value = "usuario/eliminar", method = RequestMethod.POST)
 	public String eliminar(Model model, Usuario u) {
 		LOG.info("Entrando en admin");
-		this.serviceUsuario.eliminar(u.getId());
+		String msg = "Error al eliminar el Usuario";
+		if (this.serviceUsuario.eliminar(u.getId())) {
+			msg = "Usuario eliminado correctamente";
+		}
+		model.addAttribute("msg", msg);
 		model.addAttribute("usuario", new Usuario());
 		model.addAttribute("usuarios", this.serviceUsuario.listar());
 		return "admin/index";

@@ -11,13 +11,18 @@
 		
 		<div class="container">
 		<div class="col2-left">
-			<h2>Ranking Usuarios</h2>
+			<c:if test="${estadisticas.size()>0 }">
+			<h2>Ranking Usuarios Activos</h2>
 				<ol>
 				<c:forEach items="${estadisticas}" var="e">
-					<li>${e.nombre} - ${e.contador}</li>
+					<li>${e.nombre} - ${e.contador} Lanzamientos</li>
 				</c:forEach>
 				</ol>
 				El ganador es ${estadisticas[0].nombre} !!
+			</c:if>
+			<c:if test="${estadisticas.size()== 0}">
+			<p> No hay lanzamientos </p>
+			</c:if>
 		</div>
 		<div class="col2-right">
 			<p>  La hora según este servidor es ${serverTime}. <p>

@@ -1,5 +1,9 @@
 package com.ipartek.formacion.domain;
-
+/**
+ * Clase usuario
+ * @author Curso
+ *
+ */
 public class Usuario {
 	
 	private long id;
@@ -8,7 +12,9 @@ public class Usuario {
 	private String fechaModificacion;
 	private String fechaBaja;
 	
-	
+	/**
+	 * Constructor usuario
+	 */
 	public Usuario() {
 		super();
 		this.id = -1;
@@ -19,24 +25,36 @@ public class Usuario {
 	}
 
 	
-	
+	/**
+	 * getter id
+	 * @return id
+	 */
 	public long getId() {
 		return this.id;
 	}
 
 
-
+	/**
+	 * setter id
+	 * @param id
+	 */
 	public void setId(long id) {
 		this.id = id;
 	}
 
 
-
+	/**
+	 * getter nombre
+	 * @return nombre
+	 */
 	public String getNombre() {
 		return this.nombre;
 	}
 
-
+	/**
+	 * setter nombre
+	 * @param nombre
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
@@ -44,37 +62,55 @@ public class Usuario {
 
 	
 
-
+	/**
+	 * getter fecha de alta	
+	 * @return fechaAlta
+	 */
 	public String getFechaAlta() {
 		return this.fechaAlta;
 	}
 
 
-
+	/**
+	 * setter fechaAlta
+	 * @param fechaAlta
+	 */
 	public void setFechaAlta(String fechaAlta) {
 		this.fechaAlta = fechaAlta;
 	}
 
 
-
+	/**
+	 * getter fecha de modificacion
+	 * @return fechamodificacion
+	 */
 	public String getFechaModificacion() {
 		return this.fechaModificacion;
 	}
 
 
-
+	/**
+	 * setter fecha de modificacion
+	 * @param fechaModificacion
+	 */
 	public void setFechaModificacion(String fechaModificacion) {
 		this.fechaModificacion = fechaModificacion;
 	}
 
 
-
+	/**
+	 * getter fecha de baja
+	 * @return fechaBaja
+	 */
 	public String getFechaBaja() {
 		return this.fechaBaja;
 	}
 
 
-
+	/**
+	 * setter fecha de baja
+	 * @param fechaBaja
+	 */
 	public void setFechaBaja(String fechaBaja) {
 		this.fechaBaja = fechaBaja;
 	}

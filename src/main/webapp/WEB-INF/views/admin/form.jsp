@@ -9,9 +9,9 @@
 				Formulario - CRUD Usuarios
 			</h3>
 		</div>
-
 		<div class="bofficecontainer">
 			<span><a href="admin">Volver</a></span>
+			<p>${msg}</p>
 			<h2 class="bofficetextf">CRUD Usuarios</h2>
 		<form:form action="usuario/crear" modelAttribute="usuario">
 			<label>Id:</label>
