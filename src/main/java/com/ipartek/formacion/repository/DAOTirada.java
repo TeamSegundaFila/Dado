@@ -69,11 +69,6 @@ public interface DAOTirada {
 	 */
 	int total();
 	/**
-	 * Muestra las ultimas 5 tiradas 
-	 * @return arrayList de 5 tiradas
-	 */
-	List<Lanzamientos> getUltimos();
-	/**
 	 * Muestras la ultimas n tiradas
 	 * @param n
 	 * @return arrayList de n tiradas

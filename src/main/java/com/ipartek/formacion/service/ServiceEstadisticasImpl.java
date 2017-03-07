@@ -10,7 +10,7 @@ import com.ipartek.formacion.domain.Lanzamientos;
 import com.ipartek.formacion.repository.DAOTirada;
 
 /**
- * Implementacion de la interfaz del servicio de Estadísticas
+ * Implementacion de la interfaz del servicio de Estadï¿½sticas
  * 
  * @author Curso
  *
@@ -34,11 +34,6 @@ public class ServiceEstadisticasImpl implements ServiceEstadisticas {
 	@Override()
 	public int total() {
 		return this.daoTirada.total();
-	}
-
-	@Override()
-	public List<Lanzamientos> getUltimos() {
-		return this.daoTirada.getUltimos();
 	}
 
 	@Override()

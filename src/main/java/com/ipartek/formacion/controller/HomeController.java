@@ -37,6 +37,7 @@ public class HomeController {
 	private int contadorMagic;
 	
 	private final static int LIMITE_CONTADOR = 3;
+	private final static int ULTIMOS_CINCO = 5;
 
 	private static final Logger LOG = LoggerFactory.getLogger(HomeController.class);
 
@@ -86,6 +87,7 @@ public class HomeController {
 
 		if (this.contadorMagic < LIMITE_CONTADOR) {
 			this.contadorMagic++;
+			LOG.info("Valor del contador = " + contadorMagic);
 		}
 
 		return "home";
@@ -102,7 +104,7 @@ public class HomeController {
 		model.addAttribute("estadisticas", this.serviceEstadisticas.getEstadisticas());
 		model.addAttribute("estadisticasTotales", this.serviceEstadisticas.getEstadisticasTotales());
 		model.addAttribute("total", this.serviceEstadisticas.total());
-		model.addAttribute("ultimos", this.serviceEstadisticas.getUltimos());
+		model.addAttribute("ultimos", this.serviceEstadisticas.getUltimos(ULTIMOS_CINCO));
 		return "estadisticas";
 	}
 

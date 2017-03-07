@@ -35,7 +35,6 @@ import com.ipartek.formacion.repository.mapper.TiradaMapper;
 public class DAOTiradaImpl implements DAOTirada {
 
 	private final Log logger = LogFactory.getLog(getClass());
-
 	@Autowired()
 	private DataSource dataSource;
 	private JdbcTemplate jdbcTemplate;
@@ -56,14 +55,7 @@ public class DAOTiradaImpl implements DAOTirada {
 	private static final String SQL_GET_ESTADISTICAS_ACTIVAS = "SELECT count(tirada.id) as Lanzamientos, usuario.nombre FROM tirada, usuario WHERE usuario.id = tirada.usuario_id AND usuario.fecha_baja IS NULL GROUP BY usuario.nombre ORDER BY Lanzamientos DESC, MAX(tirada.fecha) DESC LIMIT 500;";
 	private static final String SQL_GET_ESTADISTICAS_TOTALES = "SELECT count(tirada.id) as Lanzamientos, usuario.nombre FROM tirada, usuario WHERE usuario.id = tirada.usuario_id GROUP BY usuario.nombre ORDER BY Lanzamientos DESC, MAX(tirada.fecha) DESC LIMIT 500;";
 	private static final String SQL_COUNT = "SELECT COUNT(id) FROM tirada;";
-	private static final String SQL_ULTIMAS_TIRADAS = "SELECT tirada.id, usuario.nombre, tirada.fecha FROM tirada, usuario WHERE usuario.id = tirada.usuario_id ORDER BY fecha DESC, tirada.id DESC LIMIT 5;";
-	private static final String SQL_ULTIMAS_TIRADAS_N1 = "SELECT tirada.id, usuario.nombre, tirada.fecha FROM tirada, usuario WHERE usuario.id = tirada.usuario_id ORDER BY fecha DESC, tirada.id DESC LIMIT 1;";
-	private static final String SQL_ULTIMAS_TIRADAS_N2 = "SELECT tirada.id, usuario.nombre, tirada.fecha FROM tirada, usuario WHERE usuario.id = tirada.usuario_id ORDER BY fecha DESC, tirada.id DESC LIMIT 2;";
-	private static final String SQL_ULTIMAS_TIRADAS_N3 = "SELECT tirada.id, usuario.nombre, tirada.fecha FROM tirada, usuario WHERE usuario.id = tirada.usuario_id ORDER BY fecha DESC, tirada.id DESC LIMIT 3;";
-
-	private static final int NUMERO_MAGICO_1 = 1;
-	private static final int NUMERO_MAGICO_2 = 2;
-	private static final int NUMERO_MAGICO_3 = 3;
+	private static final String SQL_ULTIMAS_TIRADAS = "SELECT tirada.id, usuario.nombre, tirada.fecha FROM tirada, usuario WHERE usuario.id = tirada.usuario_id ORDER BY fecha DESC, tirada.id DESC LIMIT ?;";
 	
 	@Override()
 	public List<Tirada> getAll() {
@@ -199,39 +191,10 @@ public class DAOTiradaImpl implements DAOTirada {
 	}
 
 	@Override()
-	public List<Lanzamientos> getUltimos() {
-		ArrayList<Lanzamientos> lista = new ArrayList<Lanzamientos>();
-		try {
-			lista = (ArrayList<Lanzamientos>) this.jdbcTemplate.query(SQL_ULTIMAS_TIRADAS, new LanzamientoMapper());
-		} catch (EmptyResultDataAccessException e) {
-			this.logger.warn("No existen tiradas todavia");
-		} catch (Exception e) {
-			this.logger.error(e.getMessage());
-		}
-		return lista;
-	}
-
-	@Override()
 	public List<Lanzamientos> getUltimos(int n) {
 		ArrayList<Lanzamientos> lista = new ArrayList<Lanzamientos>();
 		try {
-			if (n == NUMERO_MAGICO_1) {
-				lista = (ArrayList<Lanzamientos>) this.jdbcTemplate.query(SQL_ULTIMAS_TIRADAS_N1,
-						new LanzamientoMapper());
-			} else if (n == NUMERO_MAGICO_2) {
-				lista = (ArrayList<Lanzamientos>) this.jdbcTemplate.query(SQL_ULTIMAS_TIRADAS_N2,
-						new LanzamientoMapper());
-			} else if (n == NUMERO_MAGICO_3) {
-				lista = (ArrayList<Lanzamientos>) this.jdbcTemplate.query(SQL_ULTIMAS_TIRADAS_N3,
-						new LanzamientoMapper());
-			} else if (n > NUMERO_MAGICO_3) {
-				lista = (ArrayList<Lanzamientos>) this.jdbcTemplate.query(SQL_ULTIMAS_TIRADAS_N3,
-						new LanzamientoMapper());
-				this.logger.warn("Valor de contador excesivo (mayor que 3, demasiados gifs) = " + n);
-			} else {
-				this.logger.warn("Valor de contador incorrecto (probablemente negativo) = " + n);
-			}
-
+			lista = (ArrayList<Lanzamientos>) this.jdbcTemplate.query(SQL_ULTIMAS_TIRADAS, new Object[]{ n }, new LanzamientoMapper());
 		} catch (EmptyResultDataAccessException e) {
 			this.logger.warn("No existen tiradas todavia");
 		} catch (Exception e) {
@@ -239,4 +202,5 @@ public class DAOTiradaImpl implements DAOTirada {
 		}
 		return lista;
 	}
+	
 }

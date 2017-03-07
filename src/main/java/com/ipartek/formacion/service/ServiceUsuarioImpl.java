@@ -12,7 +12,7 @@ import com.ipartek.formacion.domain.Usuario;
 import com.ipartek.formacion.repository.DAOUsuario;
 
 /**
- * Implementación del servicio del Usuario
+ * Implementaciï¿½n del servicio del Usuario
  * 
  * @author Curso
  *
@@ -62,11 +62,15 @@ public class ServiceUsuarioImpl implements ServiceUsuario {
 
 	@Override()
 	public Usuario lanzarDado() {
+		Usuario resul = new Usuario();
 		ArrayList<Usuario> pringados = (ArrayList<Usuario>) this.daoUsuario.getAllUsuariosDeAlta();
 		double aleatorio = Math.floor(Math.random() * (pringados.size()));
 		int n = (int) aleatorio;
 		this.logger.info("Sacando valor n:" + n + " y aleatorio " + aleatorio);
-		return pringados.get(n);
+		if (pringados.size() > 0){
+			resul = pringados.get(n);
+		}
+		return resul;
 	}
 
 }
