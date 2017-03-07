@@ -97,7 +97,7 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/estadisticas", method = RequestMethod.GET)
 	public String listarEstadisticas(Model model) {
-		LOG.info("Listando p·gina de estadisticas");
+		LOG.info("Listando p√°gina de estadisticas");
 
 		model.addAttribute("estadisticas", this.serviceEstadisticas.getEstadisticas());
 		model.addAttribute("estadisticasTotales", this.serviceEstadisticas.getEstadisticasTotales());

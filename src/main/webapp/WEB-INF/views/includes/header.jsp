@@ -4,8 +4,8 @@
 
 <html>
 <head>
-	<title>Proyecto 1D6</title>
-	<base href="/trileros/" />
+	<title>Dado Equipo 3</title>
+	<base href="/dado_eq3/" />
 	<link href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" rel="stylesheet">
 	<!-- Custom -->
 	<link href="resources/css/custom.css" rel="stylesheet">

@@ -2,7 +2,7 @@
 
 		<div id="cabecera">
 			<h1>
-				Proyecto Dado 
+				Proyecto Dado Equipo 3
 			</h1>
 			<h3>
 				- Fila #2 -

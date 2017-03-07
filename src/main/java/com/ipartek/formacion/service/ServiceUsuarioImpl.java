@@ -63,7 +63,7 @@ public class ServiceUsuarioImpl implements ServiceUsuario {
 	@Override()
 	public Usuario lanzarDado() {
 		ArrayList<Usuario> pringados = (ArrayList<Usuario>) this.daoUsuario.getAllUsuariosDeAlta();
-		double aleatorio = Math.round(Math.random() * (pringados.size() - 1));
+		double aleatorio = Math.floor(Math.random() * (pringados.size()));
 		int n = (int) aleatorio;
 		this.logger.info("Sacando valor n:" + n + " y aleatorio " + aleatorio);
 		return pringados.get(n);
