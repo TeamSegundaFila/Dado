@@ -34,7 +34,7 @@
 		</div>
 		
 		
-		<c:if test="${afortunado != null}">
+		<c:if test="${not empty afortunado}">
 			<div id="cabecera">
 				<h2>El afortunado lector voluntario será:</h2>
 			</div>
@@ -53,7 +53,9 @@
 				<hr>
 			</c:forEach>
 		</c:if>
-	
+		<c:if test="${empty afortunado && ultimos != null}">
+		<p><b> No hay usuarios activos o registrados </b></p>
+		</c:if>
 		<br>
 		<br>
 

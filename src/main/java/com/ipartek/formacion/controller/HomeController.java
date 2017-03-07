@@ -38,6 +38,7 @@ public class HomeController {
 	
 	private final static int LIMITE_CONTADOR = 3;
 	private final static int ULTIMOS_CINCO = 5;
+	private final static int ID_NO_EXISTE =-1;
 
 	private static final Logger LOG = LoggerFactory.getLogger(HomeController.class);
 
@@ -76,10 +77,12 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 		model.addAttribute("serverTime", formattedDate);
 		Usuario afortunado = this.serviceUsuario.lanzarDado();
-		Tirada t = new Tirada();
-		t.setUsuarioId(afortunado.getId());
-
-		this.serviceTirada.crear(t);
+		if (afortunado.getId() != ID_NO_EXISTE) {
+			Tirada t = new Tirada();
+			t.setUsuarioId(afortunado.getId());
+			this.serviceTirada.crear(t);
+		}
+		model.addAttribute("ultimos", this.serviceEstadisticas.getUltimos(this.contadorMagic));
 		model.addAttribute("afortunado", afortunado.getNombre());
 		model.addAttribute("estadisticas", this.serviceEstadisticas.getEstadisticas());
 		model.addAttribute("ultimos", this.serviceEstadisticas.getUltimos(this.contadorMagic));
