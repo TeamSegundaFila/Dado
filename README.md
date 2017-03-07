@@ -1,7 +1,6 @@
 #Proyecto dado
 
 Dado equipo 3 (Fila 2) desarrollado con Java6 y Spring 3.
-Multiidioma para Castellano, Euskera y el lenguaje de la calle.
 
 ![Alt text](documentacion/screenshot.png?raw=true 'El pelanas ense�andonos a ser trileros')
 
