@@ -90,7 +90,6 @@ public class HomeController {
 
 		if (this.contadorMagic < LIMITE_CONTADOR) {
 			this.contadorMagic++;
-			LOG.info("Valor del contador = " + contadorMagic);
 		}
 
 		return "home";
