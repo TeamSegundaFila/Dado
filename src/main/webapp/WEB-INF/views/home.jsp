@@ -4,9 +4,9 @@
 	<div class="col-md-12 maincajon">
 		<div class="col-md-12 dadomain">
 			<a href="lanzar">
-				<img id="imgdado" src="resources/img/dado.gif" alt="Dado button"/>
+				<img id="imgdado" src="resources/img/dado.png" alt="Dado button"/>
 			</a>
-			<p>Pruebe a lanzar los dados para elegir el afortunado. ¡La magia del azar le está esperando! <p> 
+			<p>Pruebe a lanzar el dado (Clickeando en la imagen) para elegir el afortunado. ¡La magia del azar le está esperando! <p> 
 	        <c:if test="${not empty afortunado}">
 				<h2><b> El afortunado es: ${afortunado} </b></h2>
 			</c:if>
@@ -25,11 +25,11 @@
 					</ol>
 				</c:if>
 				<c:if test="${estadisticas.size()== 0}">
-					<p> No hay lanzamientos </p>
+					<h2> No hay lanzamientos </h2>
 				</c:if>
 			</div>
 			<div class="col-md-6">
-				<h2>Historial de lanzamientos del dado</h2>
+				<h2>Ultimos 5 Lanzamientos</h2>
 				<ul>
 					<c:forEach items="${ultimos}" var="u">
 							<li>#${u.id} ${u.nombre} - ${u.fecha}</li>

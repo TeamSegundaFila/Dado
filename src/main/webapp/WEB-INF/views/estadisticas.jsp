@@ -4,7 +4,7 @@
 		<div class="col-md-12 maincajon">
 			<div class="col-md-6">
 				<c:if test="${estadisticas.size()>0 }">
-					<h2>Ranking Lanzamientos</h2>
+					<h3>Ranking Lanzamientos de usuarios activos</h3>
 					<ol>
 					<c:forEach items="${estadisticas}" var="e">
 						<li>${e.nombre} - ${e.contador}</li>
@@ -25,7 +25,7 @@
 					</ul>
 				</c:if>
 				<c:if test="${estadisticasTotales.size()== 0}">
-					<p> No hay lanzamientos </p>
+					<h2> No hay lanzamientos </h2>
 				</c:if>
 			</div>
 		</div>

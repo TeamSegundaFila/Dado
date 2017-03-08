@@ -15,7 +15,7 @@ import com.ipartek.formacion.domain.Usuario;
 public interface DAOUsuario {
 
 	/**
-	 * Método que setea el datasource :)
+	 * MÃ©todo que setea el datasource :)
 	 * 
 	 * @param ds
 	 *            nos devuelve un objeto datasource
@@ -23,7 +23,7 @@ public interface DAOUsuario {
 	void setDatasource(DataSource ds);
 
 	/**
-	 * Método que devuelve la lista total de usuarios, tanto dados de alta como
+	 * MÃ©todo que devuelve la lista total de usuarios, tanto dados de alta como
 	 * de baja
 	 * 
 	 * @return - devuelve un Array list de objetos Usuario
@@ -31,17 +31,17 @@ public interface DAOUsuario {
 	List<Usuario> getAll();
 
 	/**
-	 * Método que devuelve el usuario corrspondiente al input de Id
+	 * MÃ©todo que devuelve el usuario corrspondiente al input de Id
 	 * 
 	 * @param id
-	 *            Párametro de input con el numero que identifica al usuario en
+	 *            Pï¿½rametro de input con el numero que identifica al usuario en
 	 *            la BBDD
 	 * @return - devuelve un objeto Usuario
 	 */
 	Usuario getById(long id);
 
 	/**
-	 * Método que devuelve True si consigue insertar en la BBDD el objeto
+	 * MÃ©todo que devuelve True si consigue insertar en la BBDD el objeto
 	 * Usuario pasado como input, False en caso contrario
 	 * 
 	 * @param u
@@ -51,7 +51,7 @@ public interface DAOUsuario {
 	boolean insert(Usuario u);
 
 	/**
-	 * Método que devuelve True si consigue actualizar en la BBDD el objeto
+	 * MÃ©todo que devuelve True si consigue actualizar en la BBDD el objeto
 	 * Usuario pasado como input, Falso en caso contrario
 	 * 
 	 * @param u
@@ -61,7 +61,7 @@ public interface DAOUsuario {
 	boolean update(Usuario u);
 
 	/**
-	 * Método que devuelve True si consigue eliminar de la BBDD la entrada
+	 * MÃ©todo que devuelve True si consigue eliminar de la BBDD la entrada
 	 * correspondiente al parametro id pasado como input, Falso en caso
 	 * contrario
 	 * 
@@ -72,7 +72,7 @@ public interface DAOUsuario {
 	boolean delete(long id);
 
 	/**
-	 * Método que devuelve True si consigue dar de baja de la BBDD la entrada
+	 * MÃ©todo que devuelve True si consigue dar de baja de la BBDD la entrada
 	 * correspondiente al parametro id pasado como input, Falso en caso
 	 * contrario
 	 * 
@@ -83,7 +83,7 @@ public interface DAOUsuario {
 	boolean darBaja(long id);
 
 	/**
-	 * Método que devuelve True si consigue dar de alta de la BBDD la entrada
+	 * MÃ©todo que devuelve True si consigue dar de alta de la BBDD la entrada
 	 * correspondiente al parametro id pasado como input, Falso en caso
 	 * contrario
 	 * 
@@ -94,7 +94,7 @@ public interface DAOUsuario {
 	boolean darAlta(long id);
 
 	/**
-	 * Método que devuelve la lista total de usuarios dados de alta
+	 * MÃ©todo que devuelve la lista total de usuarios dados de alta
 	 * 
 	 * @return - devuelve una lista de objetos
 	 */

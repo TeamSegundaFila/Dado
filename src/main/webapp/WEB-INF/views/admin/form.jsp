@@ -11,16 +11,16 @@
 			<h2>CRUD Usuarios</h2>
 			<form:form action="usuario/crear" modelAttribute="usuario">
 				<label>Id:</label>
-				<form:input class="form-control" path="id" readonly="true"/><br><br>
+				<form:input class="form-control" path="id" readonly="true"/><br>
 				<label>Nombre:</label>
 				<form:input class="form-control" path="nombre"/><br>
-				<form:errors path="nombre" cssStyle="color:red;"/><br>
+				<form:errors path="nombre" cssStyle="color:red;"/>
 				<label>Fecha Alta:</label>
-				<form:input class="form-control" path="fechaAlta" readonly="true"/><br><br>
+				<form:input class="form-control" path="fechaAlta" readonly="true"/><br>
 				<label>Fecha Modificacion:</label>
-				<form:input class="form-control" path="fechaModificacion" readonly="true"/><br><br>
+				<form:input class="form-control" path="fechaModificacion" readonly="true"/><br>
 				<label>Fecha Baja:</label>
-				<form:input class="form-control" path="fechaBaja" readonly="true"/><br><br>
+				<form:input class="form-control" path="fechaBaja" readonly="true"/><br>
 				<c:choose>
 					<c:when test="${usuario.id == -1}">
 						<form:button type="submit" class="btn btn-primary margin1">Crear</form:button>
