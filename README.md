@@ -2,7 +2,7 @@
 
 Dado equipo 3 (Fila 2) desarrollado con Java6 y Spring 3.
 
-![Alt text](documentacion/screenshot.PNG?raw=true 'Web dado principal')
+![Alt text](documentacion/screenshot.png?raw=true 'Web dado principal')
 
 ## Requisitos:
 	Es necesario tener instalado el siguiente entorno para ejecutar la App:
