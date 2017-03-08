@@ -33,20 +33,19 @@ public class HomeController {
 
 	@Autowired()
 	private ServiceEstadisticas serviceEstadisticas;
-
-	private int contadorMagic;
 	
-	private final static int LIMITE_CONTADOR = 3;
 	private final static int ULTIMOS_CINCO = 5;
 	private final static int ID_NO_EXISTE =-1;
 
 	private static final Logger LOG = LoggerFactory.getLogger(HomeController.class);
 
+
+	
 	/**
 	 * Pagina Home para lanzar dado y ver rankings
 	 * @param locale idioma del navegador del usuario
 	 * @param model atributos para la vista
-	 * @return vista home.jsp
+	 * @return home.jsp
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
@@ -54,18 +53,17 @@ public class HomeController {
 
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		this.contadorMagic = 1;
 		String formattedDate = dateFormat.format(date);
-		model.addAttribute("estadisticas", this.serviceEstadisticas.getEstadisticas());
+		model.addAttribute("estadisticas", this.serviceEstadisticas.getEstadisticasTotales());
 		model.addAttribute("serverTime", formattedDate);
-		model.addAttribute("contadorMagic", this.contadorMagic);
-
+		model.addAttribute("ultimos", this.serviceEstadisticas.getUltimos(ULTIMOS_CINCO));
+		model.addAttribute("afortunado", "");
 		return "home";
 	}
 	/**
 	 * Lanza el dado y escoge una persona activa
-	 * @param locale
-	 * @param model
+	 * @param locale idioma
+	 * @param model guapo
 	 * @return home.jsp
 	 */
 	@RequestMapping(value = "/lanzar", method = RequestMethod.GET)
@@ -82,21 +80,15 @@ public class HomeController {
 			t.setUsuarioId(afortunado.getId());
 			this.serviceTirada.crear(t);
 		}
-		model.addAttribute("ultimos", this.serviceEstadisticas.getUltimos(this.contadorMagic));
 		model.addAttribute("afortunado", afortunado.getNombre());
-		model.addAttribute("estadisticas", this.serviceEstadisticas.getEstadisticas());
-		model.addAttribute("ultimos", this.serviceEstadisticas.getUltimos(this.contadorMagic));
-		model.addAttribute("contadorMagic", this.contadorMagic);
-
-		if (this.contadorMagic < LIMITE_CONTADOR) {
-			this.contadorMagic++;
-		}
+		model.addAttribute("estadisticas", this.serviceEstadisticas.getEstadisticasTotales());
+		model.addAttribute("ultimos", this.serviceEstadisticas.getUltimos(ULTIMOS_CINCO));
 
 		return "home";
 	}
 	/**
 	 * Carga las estadisticas de las tiradas
-	 * @param model
+	 * @param model del form
 	 * @return estadisticas.jsp
 	 */
 	@RequestMapping(value = "/estadisticas", method = RequestMethod.GET)
@@ -106,7 +98,7 @@ public class HomeController {
 		model.addAttribute("estadisticas", this.serviceEstadisticas.getEstadisticas());
 		model.addAttribute("estadisticasTotales", this.serviceEstadisticas.getEstadisticasTotales());
 		model.addAttribute("total", this.serviceEstadisticas.total());
-		model.addAttribute("ultimos", this.serviceEstadisticas.getUltimos(ULTIMOS_CINCO));
+		model.addAttribute("ultimos", this.serviceEstadisticas.getAllLanzamientos());
 		return "estadisticas";
 	}
 

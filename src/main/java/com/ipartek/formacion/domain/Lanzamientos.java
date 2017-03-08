@@ -29,7 +29,7 @@ public class Lanzamientos {
 
 	/**
 	 * setter id
-	 * @param id
+	 * @param id de usuario
 	 */
 	public void setId(long id) {
 		this.id = id;
@@ -43,21 +43,21 @@ public class Lanzamientos {
 	}
 	/**
 	 * setter nombre
-	 * @param nombre
+	 * @param nombre usuario
 	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 	/**
 	 * getter fecha
-	 * @return fecha
+	 * @return fecha de lanzamiento
 	 */
 	public String getFecha() {
 		return this.fecha;
 	}
 	/**
 	 * setter fecha
-	 * @param fecha
+	 * @param fecha de lanzamiento
 	 */
 	public void setFecha(String fecha) {
 		this.fecha = fecha;

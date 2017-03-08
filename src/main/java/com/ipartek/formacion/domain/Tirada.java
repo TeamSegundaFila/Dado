@@ -29,7 +29,7 @@ public class Tirada {
 	}
 	/**
 	 * setter id
-	 * @param id
+	 * @param id de tirada
 	 */
 	public void setId(long id) {
 		this.id = id;
@@ -43,7 +43,7 @@ public class Tirada {
 	}
 	/**
 	 * setter fecha lanzamiento
-	 * @param fechaLanzamiento
+	 * @param fechaLanzamiento del dado
 	 */
 	public void setFechaLanzamiento(Date fechaLanzamiento) {
 		this.fechaLanzamiento = fechaLanzamiento;
@@ -57,7 +57,7 @@ public class Tirada {
 	}
 	/**
 	 * setter usuario_id
-	 * @param usuarioid
+	 * @param usuarioid llave foranea de tirada
 	 */
 	public void setUsuarioId(long usuarioid) {
 		this.usuarioId = usuarioid;

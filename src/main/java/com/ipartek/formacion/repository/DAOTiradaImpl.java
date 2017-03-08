@@ -56,6 +56,7 @@ public class DAOTiradaImpl implements DAOTirada {
 	private static final String SQL_GET_ESTADISTICAS_TOTALES = "SELECT count(tirada.id) as Lanzamientos, usuario.nombre FROM tirada, usuario WHERE usuario.id = tirada.usuario_id GROUP BY usuario.nombre ORDER BY Lanzamientos DESC, MAX(tirada.fecha) DESC LIMIT 500;";
 	private static final String SQL_COUNT = "SELECT COUNT(id) FROM tirada;";
 	private static final String SQL_ULTIMAS_TIRADAS = "SELECT tirada.id, usuario.nombre, tirada.fecha FROM tirada, usuario WHERE usuario.id = tirada.usuario_id ORDER BY fecha DESC, tirada.id DESC LIMIT ?;";
+	private static final String SQL_GET_ALL_LANZAMIENTOS = "SELECT tirada.id, usuario.nombre, tirada.fecha FROM tirada, usuario WHERE usuario.id = tirada.usuario_id ORDER BY fecha DESC, tirada.id DESC LIMIT 500;";
 	
 	@Override()
 	public List<Tirada> getAll() {
@@ -70,6 +71,19 @@ public class DAOTiradaImpl implements DAOTirada {
 		return lista;
 	}
 
+	@Override()
+	public List<Lanzamientos> getAllLanzamientos() {
+		ArrayList<Lanzamientos> lista = new ArrayList<Lanzamientos>();
+		try {
+			lista = (ArrayList<Lanzamientos>) this.jdbcTemplate.query(SQL_GET_ALL_LANZAMIENTOS, new LanzamientoMapper());
+		} catch (EmptyResultDataAccessException e) {
+			this.logger.warn("No existen lanzamientos todavia");
+		} catch (Exception e) {
+			this.logger.error(e.getMessage());
+		}
+		return lista;
+	}
+	
 	@Override()
 	public List<Tirada> getAllByUser(long idUsuario) {
 		ArrayList<Tirada> lista = new ArrayList<Tirada>();

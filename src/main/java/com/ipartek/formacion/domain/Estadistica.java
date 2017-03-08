@@ -8,6 +8,7 @@ public class Estadistica {
 
 	private String nombre;
 	private int contador;
+	private int probabilidad;
 	/**
 	 * Creador estadistica
 	 */
@@ -15,6 +16,7 @@ public class Estadistica {
 		super();
 		this.nombre = "";
 		this.contador = -1;
+		this.probabilidad = 0;
 	}
 	/**
 	 * Getter del nombre
@@ -25,7 +27,7 @@ public class Estadistica {
 	}
 	/** 
 	 * setter del nombre
-	 * @param nombre
+	 * @param nombre usuario
 	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
@@ -39,12 +41,25 @@ public class Estadistica {
 	}
 	/**
 	 * setter contador
-	 * @param contador
+	 * @param contador de lanzamientos
 	 */
 	public void setContador(int contador) {
 		this.contador = contador;
 	}
-
+	/**
+	 * getter Probabilidad
+	 * @return probabilidad
+	 */
+	public int getProbabilidad() {
+		return this.probabilidad;
+	}
+	/**
+	 * setter probabilidad
+	 * @param probabilidad %
+	 */
+	public void setProbabilidad(int probabilidad) {
+		this.probabilidad = probabilidad;
+	}
 	@Override()
 	public String toString() {
 		return "Estadistica [nombre=" + this.nombre + ", contador=" + this.contador + "]";

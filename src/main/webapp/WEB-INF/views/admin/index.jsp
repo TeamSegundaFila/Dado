@@ -2,12 +2,12 @@
 		
 	<div class="row">
 		<div class="col-md-12 maincajon">		
-			<h2>Listado usuarios</h2>
 			<c:if test="${not empty msg}">
 				<p class="alert alert-success" role="alert">${msg}</p>
 			</c:if>
-			<a href="admin/usuario/edit" class="btn btn-default">Crear nuevo usuario</a><br><br>
-			<div class="col-md-12">
+			<a href="admin/usuario/edit" class="btn btn-default">Crear nuevo usuario</a>
+			<div class="col-md-12 tablalanzamientos">
+				<h2>Listado usuarios</h2>
 				<table class="tablePlugin" cellspacing="0" width="100%">
 					<thead>
 						<tr>

@@ -37,6 +37,27 @@ body{
 	margin-bottom:10px;
 }
 
+.tablalanzamientos{
+	padding-bottom:15px;
+    background-color: rgba(230, 230, 230, 0.5);
+    margin-top: 35px;
+    border-radius: 10px;
+    border-bottom: 5px solid rgb(183, 183, 183);
+}
+
+.even{
+	background-color: rgb(230, 230, 230) !important;
+}
+
+.odd:hover{
+	background-color:rgba(68, 158, 0, 0.23);
+}
+
+.even:hover{
+	background-color:rgba(68, 158, 0, 0.23) !important;
+}
+
+
 /*
 * Imagenes
 */

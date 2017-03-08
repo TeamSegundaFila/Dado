@@ -43,7 +43,7 @@ public class AdminController {
 	/**
 	 * Abre el formulario con un usuario nuevo para poder crearlo
 	 * 
-	 * @param model
+	 * @param model admin
 	 * @return al form.jsp
 	 */
 	@RequestMapping(value = "/admin/usuario/edit", method = RequestMethod.GET)
@@ -57,8 +57,8 @@ public class AdminController {
 	/**
 	 * Abre el formulario con un usuario para modificarlo/eliminarlo
 	 * 
-	 * @param model
-	 * @param id
+	 * @param model formulario
+	 * @param id de usuario
 	 * @return al form.jsp
 	 */
 	@RequestMapping(value = "/admin/usuario/edit/{id}", method = RequestMethod.GET)
@@ -72,8 +72,8 @@ public class AdminController {
 	/**
 	 * Llama al servicio para crear o modificar el usuario
 	 * 
-	 * @param model
-	 * @param u
+	 * @param model del formulario
+	 * @param u de usuario
 	 * @return index.jsp
 	 */
 	@RequestMapping(value = "usuario/crear", method = RequestMethod.POST)

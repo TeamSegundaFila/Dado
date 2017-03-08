@@ -36,7 +36,7 @@ public class Usuario {
 
 	/**
 	 * setter id
-	 * @param id
+	 * @param id de usuario
 	 */
 	public void setId(long id) {
 		this.id = id;
@@ -53,7 +53,7 @@ public class Usuario {
 
 	/**
 	 * setter nombre
-	 * @param nombre
+	 * @param nombre de usuario
 	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
@@ -73,7 +73,7 @@ public class Usuario {
 
 	/**
 	 * setter fechaAlta
-	 * @param fechaAlta
+	 * @param fechaAlta del usuario
 	 */
 	public void setFechaAlta(String fechaAlta) {
 		this.fechaAlta = fechaAlta;
@@ -91,7 +91,7 @@ public class Usuario {
 
 	/**
 	 * setter fecha de modificacion
-	 * @param fechaModificacion
+	 * @param fechaModificacion del usuario
 	 */
 	public void setFechaModificacion(String fechaModificacion) {
 		this.fechaModificacion = fechaModificacion;
@@ -109,7 +109,7 @@ public class Usuario {
 
 	/**
 	 * setter fecha de baja
-	 * @param fechaBaja
+	 * @param fechaBaja del usuario
 	 */
 	public void setFechaBaja(String fechaBaja) {
 		this.fechaBaja = fechaBaja;

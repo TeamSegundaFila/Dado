@@ -14,23 +14,23 @@ import com.ipartek.formacion.domain.Lanzamientos;
 public interface ServiceEstadisticas {
 
 	/**
-	 * M�todo que devuelve una lis de objetos Estad�stica (uno por entrada en la
+	 * Método que devuelve una lis de objetos Estadástica (uno por entrada en la
 	 * BBDD)
 	 * 
-	 * @return - lista de objetos Estad�stica
+	 * @return - lista de objetos Estadástica
 	 */
 	List<Estadistica> getEstadisticas();
 
 	/**
-	 * M�todo que devuelve una lista de objetos Estad�stica (uno por entrada en
+	 * Método que devuelve una lista de objetos Estadástica (uno por entrada en
 	 * la BBDD)
 	 * 
-	 * @return - lista de objetos Estad�stica
+	 * @return - lista de objetos Estadástica
 	 */
 	List<Estadistica> getEstadisticasTotales();
 
 	/**
-	 * M�todo que devuelve el total de lanzamientos de dado registrados en la
+	 * Metodo que devuelve el total de lanzamientos de dado registrados en la
 	 * BBDD
 	 * 
 	 * @return - integer con el total de lanzamientos
@@ -38,10 +38,15 @@ public interface ServiceEstadisticas {
 	int total();
 
 	/**
-	 * M�todo que devueve una lista de los n �ltimos lanzamientos de dado
-	 * 
+	 * Método que devueve una lista de los últimos lanzamientos de dado
+	 * @param n entero
 	 * @return - listado de objetos Lanzamientos
 	 */
 	List<Lanzamientos> getUltimos(int n);
+	/**
+	 * Devuelve los ultimos 500 lanzamientos (si es que los hay)
+	 * @return List<Lanzamientos> en un arrayList
+	 */
+	List<Lanzamientos> getAllLanzamientos();
 
 }

@@ -4,10 +4,10 @@
 		<div class="col-md-12 maincajon">
 			<div class="col-md-6">
 				<c:if test="${estadisticas.size()>0 }">
-					<h2>Ranking Usuarios Activos</h2>
+					<h2>Ranking Lanzamientos</h2>
 					<ol>
 					<c:forEach items="${estadisticas}" var="e">
-						<li>${e.nombre} - ${e.contador} Lanzamientos</li>
+						<li>${e.nombre} - ${e.contador}</li>
 					</c:forEach>
 					</ol>
 				</c:if>
@@ -20,7 +20,7 @@
 					<h3>Frecuencia resultados</h3>
 					<ul>
 						<c:forEach items="${estadisticasTotales}" var="t">
-							<li>${t.nombre} -<b>${t.contador}</b> - ${t.contador/total*100}%</li>
+							<li>${t.nombre} - ${t.probabilidad}%</li>
 						</c:forEach>
 					</ul>
 				</c:if>
@@ -30,15 +30,28 @@
 			</div>
 		</div>
 		<div class="col-md-12 totaltiradas">
-			<p>Total de lanzamientos ---> ${total} Lanzamientos</p>
+			<p>Total de lanzamientos : ${total} Lanzamientos</p>
 		</div>
-		<div class="col-md-12">
+		<div class="col-md-12 tablalanzamientos">
 			<h3>Historial de lanzamientos del dado</h3>
-			<ul>
-				<c:forEach items="${ultimos}" var="u">
-						<li>#${u.id} ${u.nombre} - ${u.fecha}</li>
-				</c:forEach>
-			</ul>
+			<table class="tablePlugin" cellspacing="0" width="100%">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Nombre</th>
+						<th>Fecha</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${ultimos}" var="u">
+						<tr>
+							<td>${u.id}</td>
+							<td>${u.nombre}</td>
+							<td>${u.fecha}</td>
+						</tr>		
+					</c:forEach>
+				</tbody>	
+			</table>
 		</div>	
 	</div>
 <%@ include file="includes/footer.jsp" %>
