@@ -52,8 +52,8 @@ public class DAOTiradaImpl implements DAOTirada {
 	private static final String SQL_INSERT = "INSERT INTO `tirada` (`usuario_id`) VALUES (?);";
 	private static final String SQL_UPDATE = "UPDATE `tirada` SET `usuario_id`= ? WHERE `id`= ? ;";
 	private static final String SQL_DELETE = "DELETE FROM `usuario` WHERE `id` = ?;";
-	private static final String SQL_GET_ESTADISTICAS_ACTIVAS = "SELECT count(tirada.id) as Lanzamientos, usuario.nombre FROM tirada, usuario WHERE usuario.id = tirada.usuario_id AND usuario.fecha_baja IS NULL GROUP BY usuario.nombre ORDER BY Lanzamientos DESC, MAX(tirada.fecha) DESC LIMIT 500;";
-	private static final String SQL_GET_ESTADISTICAS_TOTALES = "SELECT count(tirada.id) as Lanzamientos, usuario.nombre FROM tirada, usuario WHERE usuario.id = tirada.usuario_id GROUP BY usuario.nombre ORDER BY Lanzamientos DESC, MAX(tirada.fecha) DESC LIMIT 500;";
+	private static final String SQL_GET_ESTADISTICAS_ACTIVAS = "SELECT count(tirada.id) as Lanzamientos, usuario.nombre FROM tirada, usuario WHERE usuario.id = tirada.usuario_id AND usuario.fecha_baja IS NULL GROUP BY usuario.id ORDER BY Lanzamientos DESC, MAX(tirada.fecha) DESC LIMIT 500;";
+	private static final String SQL_GET_ESTADISTICAS_TOTALES = "SELECT count(tirada.id) as Lanzamientos, usuario.nombre FROM tirada, usuario WHERE usuario.id = tirada.usuario_id GROUP BY usuario.id ORDER BY Lanzamientos DESC, MAX(tirada.fecha) DESC LIMIT 500;";
 	private static final String SQL_COUNT = "SELECT COUNT(id) FROM tirada;";
 	private static final String SQL_ULTIMAS_TIRADAS = "SELECT tirada.id, usuario.nombre, tirada.fecha FROM tirada, usuario WHERE usuario.id = tirada.usuario_id ORDER BY fecha DESC, tirada.id DESC LIMIT ?;";
 	private static final String SQL_GET_ALL_LANZAMIENTOS = "SELECT tirada.id, usuario.nombre, tirada.fecha FROM tirada, usuario WHERE usuario.id = tirada.usuario_id ORDER BY fecha DESC, tirada.id DESC LIMIT 500;";

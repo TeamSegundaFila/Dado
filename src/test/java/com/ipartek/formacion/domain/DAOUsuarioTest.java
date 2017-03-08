@@ -15,8 +15,6 @@ public class DAOUsuarioTest {
 	@Autowired()
     private DAOUsuario dao;
 
-	static int contador = -1;
-	static int contatorInicial = -1;
 	static Usuario u = null;
 
 	static final int LIMITE_SELECT = 500;
@@ -41,6 +39,8 @@ public class DAOUsuarioTest {
 	@Transactional
 	public void test() {
 		// crear usuario
+//		assertTrue("No inserta usuario", dao.insert(u));
+		
 		assertTrue("No inserta usuario", true);
 	}
 

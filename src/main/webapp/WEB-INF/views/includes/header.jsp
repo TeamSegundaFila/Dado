@@ -50,7 +50,7 @@
                         <a href="#">Home</a>
                     </li>
                     <li>
-                        <a href="estadisticas">Estaditicas</a>
+                        <a href="estadisticas">Estadisticas</a>
                     </li>
                     <li>
                         <a href="admin">Administracion</a>
