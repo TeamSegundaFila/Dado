@@ -2,145 +2,39 @@
 
 body{
 	margin:0px;
-	background: linear-gradient(LightBlue, Seashell);
+	background:white;
 }
 
-/*
-* Efecto brillo
-*/
-.ganador {
+.maincajon{
+	padding-top:90px;
+}
+
+.dadomain{
 	text-align:center;
-    -webkit-animation: glow .5s infinite alternate;
-}
-@-webkit-keyframes glow {
-    to {
-        text-shadow: 0 0 15px Purple;
-    }
+	background-color: rgba(68, 158, 0, 0.23);
+	border-radius:10px;
+	border-bottom:4px solid rgba(68, 158, 0, 0.45);
+	padding-bottom:30px;
 }
 
-/*
-* Estilo de texto
-*/
-h1, h2, h3, h4, h5, h6 {
-	font-family:Garamond,serif;
-}
-
-p{
-	font-family:Georgia,serif;
-}
-
-span{
-	font-family:Georgia,serif;
-}
-/*
-* Divs contenedores y bloques
-*/
-
-.inner {
-    width: 70%;
-  	margin:0 auto;
-}
-
-.row {
-	margin:20px;
-	overflow: hidden;
-}
-
-.container {
-	background-color:LightSteelBlue;
-	padding:2em;
-	overflow:hidden;
-	border-radius:0.5em;
-}
-
-
-/*
-* Divs columnas (De 3 y de 2)
-*/
-
-
-.col2-left {
-
-	width: 40%;
-	float: left;
-}
-
-.col2-right {
-
-	width: 60%;
-	float: right;
-}
-
-.col3-left {
-
-	width: 33%;
-	float: left;
-}
-
-.col3-center {
-
-	width: 33%;
-	display: inline-block;
-}
-
-.col3-right {
-
-	width: 33%;
-	float: right;
-}
-
-/*
-* Barra de navegacion
-*/
-
-#navbarouter {
-	background-color:RoyalBlue;
-	overflow:hidden;
-}
-
-#navbar {
-	padding-top:1.5em;
-    padding-right:2em;
-    padding-bottom:0.5em;
-    padding-left:2em;
-	overflow:hidden;
-}
-
-
-#navbutton {
-	padding: 0.5em;
-	float:left;
-	font-weight:bold;
-}
-
-#navbutton a {
-	color:white;
-	text-decoration:none;
-}
-
-#navbutton:hover {
-	background-color:Pink;
-} 
-
-#navbutleft {
-	padding: 0.5em;
-	float:right;
-	font-weight:bold;
-	color:white;
-	text-decoration:none;
-}
-
-#navbutleft a {
-	color:white;
-	text-decoration:none;
-}
-
-#navbutleft:hover {
-	background-color:Pink;
-} 
-
-#cabecera {
+.totaltiradas{
 	text-align:center;
+	border-top:1px solid rgba(187, 187, 187, 0.36);
+	border-bottom:1px solid rgba(187, 187, 187, 0.36);
+	padding:30px;
+	margin-top:15px;
+}
+
+.totaltiradas p{
+	margin:0px;
+}
+
+.row{
+	margin:0px;
+}
+
+.margin1{
+	margin-bottom:10px;
 }
 
 /*
@@ -157,50 +51,4 @@ span{
 }
 #imgdado:hover {
 	background-color:AntiqueWhite;
-} 
-
-#imgmagic {
-	height:15em;
-    border-radius:0.5em;
-
-    display: block;
-    margin: 1em auto;
 }
-
-#imghackerman {
-	height:12em;
-    border-radius:0.5em;
-    margin:1em;
-}
-
-/*
-* Backoffice style!!
-*/
-
-.backoffice {
-	background-color:#0000AA;
-	width:100%;
-	float:left;
-	margin-left:auto;
-}
-
-.bofficecontainer {
-	background-color:LightGrey;
-	padding:2em;
-	overflow:hidden;
-	width:25em;
-	margin:auto;
-	margin-bottom:10em;
-	font-family:courier;
-}
-
-.bofficetext {
-	color:LightGrey;
-	font-family:courier;
-}
-
-.bofficetextf {
-	color:Black;
-	font-family:courier;
-}
-

@@ -1,11 +1,14 @@
-</div> <!-- inner -->
-</div> <!-- outer -->
+</div>
+</div>
+    <!-- /#wrapper -->
+ 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+ 	<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+ 	<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 
-</body>
-</html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-<script>
+    
+    <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+	<script>
 var castellano = {
 	    "sProcessing":     "Procesando...",
 	    "sLengthMenu":     "Mostrar _MENU_ registros",
@@ -44,3 +47,8 @@ $(document).ready(function() {
     
 });//$(document).ready
 </script>
+</body>
+</html>
+
+
+

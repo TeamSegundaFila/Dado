@@ -1,62 +1,50 @@
 <%@ include file="includes/header.jsp" %>
 
-		<div id="cabecera">
-			<h1>
-				Proyecto Dado Equipo 3
-			</h1>
-			<h3>
-				- Fila #2 -
-			</h3>
-		</div>
-		
-		<div class="container">
-		<div class="col2-left">
-			<c:if test="${estadisticas.size()>0 }">
-			<h2>Ranking Usuarios Activos</h2>
-				<ol>
-				<c:forEach items="${estadisticas}" var="e">
-					<li>${e.nombre} - ${e.contador} Lanzamientos</li>
-				</c:forEach>
-				</ol>
-				El ganador es ${estadisticas[0].nombre} !!
-			</c:if>
-			<c:if test="${estadisticas.size()== 0}">
-			<p> No hay lanzamientos </p>
-			</c:if>
-		</div>
-		<div class="col2-right">
-			<p>  La hora según este servidor es ${serverTime}. <p>
+<div class="row">
+	<div class="col-md-12 maincajon">
+		<div class="col-md-12 dadomain">
 			<a href="lanzar">
-			<img id="imgdado" src="resources/img/dado.gif" alt="Dado button"/>
+				<img id="imgdado" src="resources/img/dado.gif" alt="Dado button"/>
 			</a>
-			<p>  Pruebe a lanzar los dados para elegir el afortunado. ¡La magia del azar le está esperando! <p>
+			<p>Pruebe a lanzar los dados para elegir el afortunado. ¡La magia del azar le está esperando! <p> 
+	       <c:if test="${not empty afortunado && ultimos != null}">
+				<h2><b> El afortunado es: ${afortunado} </b></h2>
+			</c:if>
+	        <c:if test="${empty afortunado && ultimos != null}">
+				<p><b> No hay usuarios activos o registrados </b></p>
+			</c:if>
 		</div>
-		</div>
-		
-		
-		<c:if test="${not empty afortunado}">
-			<div id="cabecera">
-				<h2>El afortunado lector voluntario será:</h2>
+		<div class="col-md-12">
+			<div class="col-md-6">
+				<c:if test="${estadisticas.size()>0 }">
+					<h2>Ranking Lanzamientos</h2>
+					<ol>
+						<c:forEach items="${estadisticas}" var="e">
+							<li>${e.nombre} - ${e.contador}</li>
+						</c:forEach>
+					</ol>
+				</c:if>
+				<c:if test="${estadisticas.size()== 0}">
+					<p> No hay lanzamientos </p>
+				</c:if>
 			</div>
-			<c:forEach items="${ultimos}" var="u">
-				<div  class="row">
-					<div  class="col3-left">
-						<img id="imgmagic" src="resources/img/magic.gif" alt="Magia"/>
-					</div>
-					<div  class="col3-center">
-						<h1  class="ganador"> ¡¡ ${u.nombre} !! </h1>
-					</div>
-					<div  class="col3-right">
-						<img id="imgmagic" src="resources/img/magic.gif" alt="Magia"/>
-					</div>
-				</div>
-				<hr>
-			</c:forEach>
-		</c:if>
-		<c:if test="${empty afortunado && ultimos != null}">
-		<p><b> No hay usuarios activos o registrados </b></p>
-		</c:if>
-		<br>
-		<br>
+			<div class="col-md-6">
+				<h2>Historial de lanzamientos del dado</h2>
+				<ul>
+					<c:forEach items="${ultimos}" var="u">
+							<li>#${u.id} ${u.nombre} - ${u.fecha}</li>
+					</c:forEach>
+				</ul>
+			</div>
+		</div>
+		
+		
+	</div>
+</div>
+		
+		
+		
+		
+		
 
 <%@ include file="includes/footer.jsp" %>
