@@ -91,7 +91,7 @@ public class DAOTiradaImpl implements DAOTirada {
 			lista = (ArrayList<Tirada>) this.jdbcTemplate.query(SQL_GET_BY_USUARIO_ID, new Object[] { idUsuario },
 					new TiradaMapper());
 		} catch (EmptyResultDataAccessException e) {
-			this.logger.warn("No existen tiradas todavia");
+			this.logger.warn("No existen las tiradas del usuario");
 		} catch (Exception e) {
 			this.logger.error(e.getMessage());
 		}
@@ -104,7 +104,7 @@ public class DAOTiradaImpl implements DAOTirada {
 		try {
 			t = this.jdbcTemplate.queryForObject(SQL_GET_BY_ID, new Object[] { id }, new TiradaMapper());
 		} catch (EmptyResultDataAccessException e) {
-			this.logger.warn("No existen usuarios todavia");
+			this.logger.warn("No existen la tirada");
 		} catch (Exception e) {
 			this.logger.error(e.getMessage());
 		}
@@ -192,7 +192,7 @@ public class DAOTiradaImpl implements DAOTirada {
 			lista = (ArrayList<Estadistica>) this.jdbcTemplate.query(SQL_GET_ESTADISTICAS_TOTALES,
 					new EstadisticaMapper());
 		} catch (EmptyResultDataAccessException e) {
-			this.logger.warn("No hay estadisticas");
+			this.logger.warn("No hay estadisticas totales");
 		} catch (Exception e) {
 			this.logger.error(e.getMessage());
 		}

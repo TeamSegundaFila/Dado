@@ -24,7 +24,7 @@ import com.ipartek.formacion.domain.Usuario;
 import com.ipartek.formacion.repository.mapper.UsuarioMapper;
 
 /**
- * Implementación de la DAO(Data Access Object) del Usuario
+ * Implementaciï¿½n de la DAO(Data Access Object) del Usuario
  * 
  * @author Curso
  *
@@ -73,7 +73,7 @@ public class DAOUsuarioImpl implements DAOUsuario {
 		try {
 			lista = (ArrayList<Usuario>) this.jdbcTemplate.query(SQL_GET_ALL_ALTAS, new UsuarioMapper());
 		} catch (EmptyResultDataAccessException e) {
-			this.logger.warn("No existen usuarios todavia");
+			this.logger.warn("No existen usuarios de alta todavia");
 		} catch (Exception e) {
 			this.logger.error(e.getMessage());
 		}
@@ -86,7 +86,7 @@ public class DAOUsuarioImpl implements DAOUsuario {
 		try {
 			u = this.jdbcTemplate.queryForObject(SQL_GET_BY_ID, new Object[] { id }, new UsuarioMapper());
 		} catch (EmptyResultDataAccessException e) {
-			this.logger.warn("No existen usuarios todavia");
+			this.logger.warn("No existen el usuario");
 		} catch (Exception e) {
 			this.logger.error(e.getMessage());
 		}
